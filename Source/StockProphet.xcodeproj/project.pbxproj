@@ -19,6 +19,7 @@
 		6B04865E2ADCF37F00D30452 /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B04865D2ADCF37F00D30452 /* ChartViewModel.swift */; };
 		6B0486602ADCFD5500D30452 /* ChartType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B04865F2ADCFD5500D30452 /* ChartType.swift */; };
 		6B0486622ADCFE4400D30452 /* TimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0486612ADCFE4400D30452 /* TimePeriod.swift */; };
+		6B0486642ADD246900D30452 /* StockPredictionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0486632ADD246900D30452 /* StockPredictionService.swift */; };
 		6B729E9F2ADC521C00BED9FD /* StockProphetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B729E9E2ADC521C00BED9FD /* StockProphetApp.swift */; };
 		6B729EA12ADC521C00BED9FD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B729EA02ADC521C00BED9FD /* MainView.swift */; };
 		6B729EA52ADC521D00BED9FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B729EA42ADC521D00BED9FD /* Assets.xcassets */; };
@@ -64,6 +65,7 @@
 		6B04865D2ADCF37F00D30452 /* ChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewModel.swift; sourceTree = "<group>"; };
 		6B04865F2ADCFD5500D30452 /* ChartType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartType.swift; sourceTree = "<group>"; };
 		6B0486612ADCFE4400D30452 /* TimePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriod.swift; sourceTree = "<group>"; };
+		6B0486632ADD246900D30452 /* StockPredictionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPredictionService.swift; sourceTree = "<group>"; };
 		6B729E9B2ADC521C00BED9FD /* StockProphet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockProphet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B729E9E2ADC521C00BED9FD /* StockProphetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockProphetApp.swift; sourceTree = "<group>"; };
 		6B729EA02ADC521C00BED9FD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 			children = (
 				6B0486412ADC633700D30452 /* MockStockService.swift */,
 				6B729ED82ADC591800BED9FD /* StockServiceable.swift */,
+				6B0486632ADD246900D30452 /* StockPredictionService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				6B729ED52ADC582600BED9FD /* Stock.swift in Sources */,
 				6B0486532ADCBEC400D30452 /* CandleStickChartView.swift in Sources */,
 				6B04864A2ADCABFD00D30452 /* StockForecastingModel.mlpackage in Sources */,
+				6B0486642ADD246900D30452 /* StockPredictionService.swift in Sources */,
 				6B0486452ADC66DB00D30452 /* Sequence+Foreach.swift in Sources */,
 				6B729E9F2ADC521C00BED9FD /* StockProphetApp.swift in Sources */,
 				6B729EDD2ADC5C0A00BED9FD /* ChartView.swift in Sources */,

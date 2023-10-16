@@ -18,11 +18,29 @@ struct LinearChartView: View {
                     x: .value("date", stock.date),
                     y: .value("price", stock.close)
                 )
+                .foregroundStyle(.blue)
                 PointMark(
                     x: .value("date", stock.date),
                     y: .value("price", stock.close)
                 )
             }
+            
+            ForEach(stocks) { stock in
+                LineMark(
+                    x: .value("date", stock.date),
+                    y: .value("price", stock.prediction ?? 0)
+                )
+                .foregroundStyle(.green)
+                PointMark(
+                    x: .value("date", stock.date),
+                    y: .value("price", stock.prediction ?? 0)
+                )
+            }
+            
+            RuleMark(
+                y: .value("Threshold", 100)
+            )
+            .foregroundStyle(.red)
         }
     }
 }

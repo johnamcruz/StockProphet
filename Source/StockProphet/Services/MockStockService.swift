@@ -15,6 +15,7 @@ enum StockServiceError: Error {
 }
 
 class MockStockService: StockServiceable {
+    private static let chunkSize = 10
     static let newline = "\n"
     static let comma = ","
     var stocks: [Stock] = []
@@ -27,14 +28,16 @@ class MockStockService: StockServiceable {
         do {
             stocks = try await withThrowingTaskGroup(of: Stock?.self, returning: [Stock].self) { group in
                 let rows = try getStockRows(filePath: filePath)
-                
-                for row in rows {
-                    group.addTask {
-                        do {
-                            return try self.parseStockRow(row: row)
-                        }
-                        catch {
-                            return nil
+                let numberOfChunks = Int(ceil(Double(rows.count) / Double(MockStockService.chunkSize)))
+                for rowGroup in rows.chunks(ofCount: numberOfChunks) {
+                    for row in rowGroup {
+                        group.addTask {
+                            do {
+                                return try self.parseStockRow(row: row)
+                            }
+                            catch {
+                                return nil
+                            }
                         }
                     }
                 }
@@ -77,11 +80,11 @@ class MockStockService: StockServiceable {
             throw StockServiceError.InvalidColumns
         }
         guard let date = Date.toDate(date: columns[0]),
-              let openPrice = Decimal(string: columns[1]),
-              let highPrice = Decimal(string: columns[2]),
-              let lowPrice = Decimal(string: columns[3]),
-              let closePrice = Decimal(string: columns[4]),
-              let volume = Float(columns[5]) else {
+              let openPrice = Double(columns[1]),
+              let highPrice = Double(columns[2]),
+              let lowPrice = Double(columns[3]),
+              let closePrice = Double(columns[4]),
+              let volume = Int64(columns[5]) else {
             throw StockServiceError.StockParsingFailed
         }
         return Stock(name: columns[6],
