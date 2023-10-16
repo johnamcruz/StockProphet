@@ -22,7 +22,9 @@ struct ChartView: View {
                 } else {
                     CandleStickChartView(stocks: viewModel.stocks,
                                          width: reader.size.width,
-                                         height: reader.size.height)
+                                         height: reader.size.height,
+                                         startDate: viewModel.zoomDate,
+                                         endDate: viewModel.selectedDate)
                 }
             }
         }

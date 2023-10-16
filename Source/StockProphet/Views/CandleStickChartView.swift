@@ -12,6 +12,8 @@ struct CandleStickChartView: View {
     var stocks: [Stock] = []
     var width: CGFloat
     var height: CGFloat
+    var startDate: Date
+    var endDate: Date
     
     var body: some View {
         ScrollView(.horizontal) {
@@ -28,15 +30,22 @@ struct CandleStickChartView: View {
                 }
             }
             .chartYScale(domain: Constants.minYScale...Constants.maxYScale)
+            .chartXScale(domain: startDate...endDate)
+            .chartYAxis() {
+                AxisMarks(position: .leading)
+            }
             .frame(width: Constants.dataPointWidth * CGFloat(stocks.count))
         }
-        //.frame(width: width, height: height)
+        .frame(width: width, height: height)
         .padding()
     }
 }
 
 #Preview {
-    CandleStickChartView(width: 400, height: 400)
+    CandleStickChartView(width: 400,
+                         height: 400,
+                         startDate: Date(),
+                         endDate: Date())
 }
 
 

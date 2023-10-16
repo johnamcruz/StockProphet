@@ -22,20 +22,19 @@ struct MainView: View {
                     } label: {
                         StockTickerView(stock: item)
                     }
+                    .swipeActions(edge: .trailing) {
+                        Button(role: .destructive) {
+                            deleteItem(item: item)
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
+                    }
                 }
-                .onDelete(perform: deleteItems)
             }
             .searchable(text: $viewModel.searchQuery, placement: .toolbar)
 #if os(macOS)
             .navigationSplitViewColumnWidth(min: 180, ideal: 200)
 #endif
-            .toolbar {
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Stock", systemImage: "plus")
-                    }
-                }
-            }
         } detail: {
             Text("Select a stock")
         }
@@ -45,12 +44,13 @@ struct MainView: View {
         .overlay {
             if viewModel.isLoading {
                 Rectangle()
-                    .background(.clear.opacity(0.8))
+                    .fill(Color.secondary.opacity(0.1))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .overlay {
-                        VStack(alignment: .center) {
-                            ProgressView()
-                                .progressViewStyle(.circular)
-                        }
+                        ProgressView("Loading...")
+                            .progressViewStyle(.circular)
+                            .controlSize(.extraLarge)
+                            .padding()
                     }
             }
         }
@@ -58,13 +58,13 @@ struct MainView: View {
 
     private func addItem() {
         withAnimation {
-            modelContext.insert(StockItem(name: "Apple Inc", ticker: "APPL", price: 178.0))
+            modelContext.insert(StockItem(name: "Apple Inc", ticker: "AAPL", price: 178.0))
         }
     }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
+    
+    private func deleteItem(item: StockItem) {
+        if let index = items.firstIndex(where: { $0.ticker == item.ticker }) {
+            withAnimation {
                 modelContext.delete(items[index])
             }
         }

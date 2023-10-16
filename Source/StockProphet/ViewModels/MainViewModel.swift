@@ -25,7 +25,7 @@ class MainViewModel {
     }
     
     func getChartViewModel(symbol: String) -> ChartViewModel {
-        ChartViewModel(stocks: stocks)
+        ChartViewModel(stocks: stocks.filter { $0.name == symbol })
     }
     
     func runPrediction() async throws {
