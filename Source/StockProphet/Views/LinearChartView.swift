@@ -17,6 +17,8 @@ struct LinearChartView: View {
     var minPrice: Double
     var maxPrice: Double
     
+    @State var hoverDate: Date?
+    
     var body: some View {
         ScrollView(.horizontal) {
             Chart {
@@ -27,9 +29,14 @@ struct LinearChartView: View {
                         series: .value("Actual", stock.name)
                     )
                     .foregroundStyle(.blue)
+                    
+                    if let hoverDate {
+                        RuleMark(x: .value("Date", hoverDate))
+                            .foregroundStyle(.gray)
+                    }
                 }
                 
-                ForEach(stocks) { stock in
+                /*ForEach(stocks) { stock in
                     LineMark(
                         x: .value("date", stock.date),
                         y: .value("price", stock.prediction ?? 0),
@@ -37,7 +44,7 @@ struct LinearChartView: View {
                     )
                     .foregroundStyle(.green)
                     .lineStyle(StrokeStyle(lineWidth: 3, dash: [5, 10]))
-                }
+                }*/
                 
                 RuleMark(
                     y: .value("Threshold", 100)
@@ -54,6 +61,18 @@ struct LinearChartView: View {
             .chartYAxis {
                 AxisMarks()
             }
+            .chartLegend(spacing: 30)
+            .chartOverlay { proxy in
+                Color.clear
+                    .onContinuousHover { phase in
+                        switch phase {
+                        case let .active(location):
+                            hoverDate = proxy.value(atX: location.x, as: Date.self)
+                        case .ended:
+                            hoverDate = nil
+                        }
+                    }
+            }
             .frame(width: Constants.dataPointWidth * CGFloat(stocks.count))
         }
         .frame(width: width, height: height)
@@ -65,7 +84,7 @@ struct LinearChartView: View {
     LinearChartView(width: 400,
                     height: 400,
                     startDate: Date(),
-                    endDate: Date(),                    
+                    endDate: Date(),
                     minPrice: 0,
                     maxPrice: 100)
 }
