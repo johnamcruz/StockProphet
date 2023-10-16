@@ -15,7 +15,6 @@
 		6B0486512ADCBE7500D30452 /* StockPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0486502ADCBE7500D30452 /* StockPrice.swift */; };
 		6B0486532ADCBEC400D30452 /* CandleStickChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0486522ADCBEC400D30452 /* CandleStickChartView.swift */; };
 		6B0486552ADCD0EB00D30452 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0486542ADCD0EB00D30452 /* MainViewModel.swift */; };
-		6B0486582ADCD4EF00D30452 /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = 6B0486572ADCD4EF00D30452 /* CodableCSV */; };
 		6B729E9F2ADC521C00BED9FD /* StockProphetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B729E9E2ADC521C00BED9FD /* StockProphetApp.swift */; };
 		6B729EA12ADC521C00BED9FD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B729EA02ADC521C00BED9FD /* MainView.swift */; };
 		6B729EA52ADC521D00BED9FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B729EA42ADC521D00BED9FD /* Assets.xcassets */; };
@@ -82,7 +81,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B0486582ADCD4EF00D30452 /* CodableCSV in Frameworks */,
 				6B04864D2ADCB33B00D30452 /* Algorithms in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,7 +255,6 @@
 			name = StockProphet;
 			packageProductDependencies = (
 				6B04864C2ADCB33B00D30452 /* Algorithms */,
-				6B0486572ADCD4EF00D30452 /* CodableCSV */,
 			);
 			productName = StockProphet;
 			productReference = 6B729E9B2ADC521C00BED9FD /* StockProphet.app */;
@@ -333,7 +330,6 @@
 			mainGroup = 6B729E922ADC521B00BED9FD;
 			packageReferences = (
 				6B04864B2ADCB33B00D30452 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
-				6B0486562ADCD4EF00D30452 /* XCRemoteSwiftPackageReference "CodableCSV" */,
 			);
 			productRefGroup = 6B729E9C2ADC521C00BED9FD /* Products */;
 			projectDirPath = "";
@@ -755,14 +751,6 @@
 				minimumVersion = 1.1.0;
 			};
 		};
-		6B0486562ADCD4EF00D30452 /* XCRemoteSwiftPackageReference "CodableCSV" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/dehesa/CodableCSV";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.6.7;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -770,11 +758,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6B04864B2ADCB33B00D30452 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
 			productName = Algorithms;
-		};
-		6B0486572ADCD4EF00D30452 /* CodableCSV */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6B0486562ADCD4EF00D30452 /* XCRemoteSwiftPackageReference "CodableCSV" */;
-			productName = CodableCSV;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
