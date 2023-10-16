@@ -10,25 +10,33 @@ import Charts
 
 struct CandleStickChartView: View {
     var stocks: [Stock] = []
+    var width: CGFloat
+    var height: CGFloat
     
     var body: some View {
-        Chart {
-            ForEach(stocks) { stock in
-                CandlestickMark(
-                    x: .value("date", stock.date),
-                    low: .value("low", stock.low),
-                    high: .value("high", stock.high),
-                    open: .value("open", stock.open),
-                    close: .value("close", stock.close)
-                )
-                .foregroundStyle(.green)
+        ScrollView(.horizontal) {
+            Chart {
+                ForEach(stocks) { stock in
+                    CandlestickMark(
+                        x: .value("date", stock.date),
+                        low: .value("low", stock.low),
+                        high: .value("high", stock.high),
+                        open: .value("open", stock.open),
+                        close: .value("close", stock.close)
+                    )
+                    .foregroundStyle(.green)
+                }
             }
+            .chartYScale(domain: Constants.minYScale...Constants.maxYScale)
+            .frame(width: Constants.dataPointWidth * CGFloat(stocks.count))
         }
+        //.frame(width: width, height: height)
+        .padding()
     }
 }
 
 #Preview {
-    CandleStickChartView()
+    CandleStickChartView(width: 400, height: 400)
 }
 
 

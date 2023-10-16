@@ -10,36 +10,46 @@ import Charts
 
 struct LinearChartView: View {
     var stocks: [Stock] = []
+    var width: CGFloat
+    var height: CGFloat
     
     var body: some View {
-        Chart {
-            ForEach(stocks) { stock in
-                LineMark(
-                    x: .value("date", stock.date),
-                    y: .value("price", stock.close),
-                    series: .value("Actual", stock.name)
+        ScrollView(.horizontal) {
+            Chart {
+                ForEach(stocks) { stock in
+                    LineMark(
+                        x: .value("date", stock.date),
+                        y: .value("price", stock.close),
+                        series: .value("Actual", stock.name)
+                    )
+                    .foregroundStyle(.blue)
+                }
+                
+                ForEach(stocks) { stock in
+                    LineMark(
+                        x: .value("date", stock.date),
+                        y: .value("price", stock.prediction ?? 0),
+                        series: .value("Prediction", stock.name)
+                    )
+                    .foregroundStyle(.green)
+                    .lineStyle(StrokeStyle(lineWidth: 3, dash: [5, 10]))
+                }
+                
+                RuleMark(
+                    y: .value("Threshold", 100)
                 )
-                .foregroundStyle(.blue)
+                .foregroundStyle(.red)
             }
-            
-            ForEach(stocks) { stock in
-                LineMark(
-                    x: .value("date", stock.date),
-                    y: .value("price", stock.prediction ?? 0),
-                    series: .value("Prediction", stock.name)
-                )
-                .foregroundStyle(.green)
-                .lineStyle(StrokeStyle(lineWidth: 3, dash: [5, 10]))
+            //.chartYScale(domain: Constants.minYScale...Constants.maxYScale)
+            .chartYAxis() {
+                AxisMarks(position: .leading)
             }
-            
-            RuleMark(
-                y: .value("Threshold", 100)
-            )
-            .foregroundStyle(.red)
+            .frame(width: width, height: height)
         }
+        .padding()
     }
 }
 
 #Preview {
-    LinearChartView()
+    LinearChartView(width: 400, height: 400)
 }

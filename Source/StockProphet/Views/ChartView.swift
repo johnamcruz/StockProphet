@@ -12,10 +12,16 @@ struct ChartView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            if viewModel.type == .linear {
-                LinearChartView(stocks: viewModel.filterStocks)
-            } else {
-                CandleStickChartView(stocks: viewModel.filterStocks)
+            GeometryReader { reader in
+                if viewModel.type == .linear {
+                    LinearChartView(stocks: viewModel.stocks,
+                                    width: reader.size.width,
+                                    height: reader.size.height)
+                } else {
+                    CandleStickChartView(stocks: viewModel.stocks, 
+                                         width: reader.size.width,
+                                         height: reader.size.height)
+                }
             }
         }
         .toolbar {

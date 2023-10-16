@@ -22,17 +22,6 @@ class ChartViewModel {
         self.stocks = stocks
     }
     
-    var filterStocks: [Stock] {
-        var stocks: [Stock] = []
-        do {
-            let previousDate = try getRange()
-            stocks = self.stocks.filter { $0.date >= previousDate && $0.date <= selectedDate }
-        } catch {
-            
-        }
-        return stocks
-    }
-    
     func getRange() throws -> Date {
         // Calculate the start and end dates for each time period.
         guard let oneDayAgo = Calendar.current.date(byAdding: .day, value: -1, to: selectedDate),
