@@ -1,24 +1,21 @@
 {
   "Outputs" : {
     "close" : {
-      "MLFeatureShortDescription" : "--"
+      "MLFeatureShortDescription" : ""
     }
   },
   "Inputs" : {
     "low" : {
-      "MLFeatureShortDescription" : "--"
+      "MLFeatureShortDescription" : ""
     },
     "high" : {
-      "MLFeatureShortDescription" : "--"
+      "MLFeatureShortDescription" : ""
     },
     "volume" : {
-      "MLFeatureShortDescription" : "--"
+      "MLFeatureShortDescription" : ""
     },
     "open" : {
-      "MLFeatureShortDescription" : "--"
-    },
-    "date" : {
-      "MLFeatureShortDescription" : "--"
+      "MLFeatureShortDescription" : ""
     }
   },
   "TrainingInputs" : {

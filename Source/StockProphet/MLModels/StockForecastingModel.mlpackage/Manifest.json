@@ -1,24 +1,24 @@
 {
     "fileFormatVersion": "1.0.0",
     "itemInfoEntries": {
-        "0B6AD3E1-222F-42A9-B7CF-05B6F3B0C614": {
+        "29597A62-390B-4E33-B364-7E0144A91C55": {
+            "author": "com.apple.CoreML",
+            "description": "CoreML Model Specification",
+            "name": "StockForecastingModel.mlmodel",
+            "path": "com.apple.CoreML/StockForecastingModel.mlmodel"
+        },
+        "D50751B9-DD3E-4119-A6D3-2098A53E28BA": {
             "author": "com.apple.CoreML",
             "description": "External FeatureDescription Overlay",
             "name": "FeatureDescriptions.json",
             "path": "com.apple.CoreML/FeatureDescriptions.json"
         },
-        "0BC9A517-38FC-4A6A-B2AB-3858E922130D": {
-            "author": "com.apple.CoreML",
-            "description": "CoreML Model Specification",
-            "name": "Stock Forecasting.mlmodel",
-            "path": "com.apple.CoreML/Stock Forecasting.mlmodel"
-        },
-        "59029CE5-C92E-4F97-836B-4C134100EA9E": {
+        "EA54A62B-00D4-4C4C-B8E3-C19339D4999A": {
             "author": "com.apple.CoreML",
             "description": "External Metadata Overlay",
             "name": "Metadata.json",
             "path": "com.apple.CoreML/Metadata.json"
         }
     },
-    "rootModelIdentifier": "0BC9A517-38FC-4A6A-B2AB-3858E922130D"
+    "rootModelIdentifier": "29597A62-390B-4E33-B364-7E0144A91C55"
 }

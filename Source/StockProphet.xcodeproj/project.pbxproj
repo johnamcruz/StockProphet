@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6B0486422ADC633700D30452 /* MockStockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0486412ADC633700D30452 /* MockStockService.swift */; };
 		6B0486452ADC66DB00D30452 /* Sequence+Foreach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0486442ADC66DB00D30452 /* Sequence+Foreach.swift */; };
-		6B04864A2ADCABFD00D30452 /* StockForecastingModel.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 6B0486492ADCABFD00D30452 /* StockForecastingModel.mlpackage */; };
 		6B04864D2ADCB33B00D30452 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 6B04864C2ADCB33B00D30452 /* Algorithms */; };
 		6B04864F2ADCB43600D30452 /* AMZN_data.csv in Resources */ = {isa = PBXBuildFile; fileRef = 6B04864E2ADCB43600D30452 /* AMZN_data.csv */; };
 		6B0486532ADCBEC400D30452 /* CandleStickChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0486522ADCBEC400D30452 /* CandleStickChartView.swift */; };
@@ -20,6 +19,7 @@
 		6B0486602ADCFD5500D30452 /* ChartType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B04865F2ADCFD5500D30452 /* ChartType.swift */; };
 		6B0486622ADCFE4400D30452 /* TimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0486612ADCFE4400D30452 /* TimePeriod.swift */; };
 		6B0486642ADD246900D30452 /* StockPredictionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0486632ADD246900D30452 /* StockPredictionService.swift */; };
+		6B0486662ADD997C00D30452 /* StockForecastingModel.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 6B0486652ADD997C00D30452 /* StockForecastingModel.mlpackage */; };
 		6B729E9F2ADC521C00BED9FD /* StockProphetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B729E9E2ADC521C00BED9FD /* StockProphetApp.swift */; };
 		6B729EA12ADC521C00BED9FD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B729EA02ADC521C00BED9FD /* MainView.swift */; };
 		6B729EA52ADC521D00BED9FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B729EA42ADC521D00BED9FD /* Assets.xcassets */; };
@@ -56,7 +56,6 @@
 /* Begin PBXFileReference section */
 		6B0486412ADC633700D30452 /* MockStockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStockService.swift; sourceTree = "<group>"; };
 		6B0486442ADC66DB00D30452 /* Sequence+Foreach.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Foreach.swift"; sourceTree = "<group>"; };
-		6B0486492ADCABFD00D30452 /* StockForecastingModel.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = StockForecastingModel.mlpackage; sourceTree = "<group>"; };
 		6B04864E2ADCB43600D30452 /* AMZN_data.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AMZN_data.csv; sourceTree = "<group>"; };
 		6B0486522ADCBEC400D30452 /* CandleStickChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandleStickChartView.swift; sourceTree = "<group>"; };
 		6B0486542ADCD0EB00D30452 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -66,6 +65,7 @@
 		6B04865F2ADCFD5500D30452 /* ChartType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartType.swift; sourceTree = "<group>"; };
 		6B0486612ADCFE4400D30452 /* TimePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriod.swift; sourceTree = "<group>"; };
 		6B0486632ADD246900D30452 /* StockPredictionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPredictionService.swift; sourceTree = "<group>"; };
+		6B0486652ADD997C00D30452 /* StockForecastingModel.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = StockForecastingModel.mlpackage; sourceTree = "<group>"; };
 		6B729E9B2ADC521C00BED9FD /* StockProphet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockProphet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B729E9E2ADC521C00BED9FD /* StockProphetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockProphetApp.swift; sourceTree = "<group>"; };
 		6B729EA02ADC521C00BED9FD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 		6B0486462ADCABA500D30452 /* MLModels */ = {
 			isa = PBXGroup;
 			children = (
-				6B0486492ADCABFD00D30452 /* StockForecastingModel.mlpackage */,
+				6B0486652ADD997C00D30452 /* StockForecastingModel.mlpackage */,
 			);
 			path = MLModels;
 			sourceTree = "<group>";
@@ -403,7 +403,7 @@
 				6B729EA12ADC521C00BED9FD /* MainView.swift in Sources */,
 				6B729ED52ADC582600BED9FD /* Stock.swift in Sources */,
 				6B0486532ADCBEC400D30452 /* CandleStickChartView.swift in Sources */,
-				6B04864A2ADCABFD00D30452 /* StockForecastingModel.mlpackage in Sources */,
+				6B0486662ADD997C00D30452 /* StockForecastingModel.mlpackage in Sources */,
 				6B0486642ADD246900D30452 /* StockPredictionService.swift in Sources */,
 				6B0486452ADC66DB00D30452 /* Sequence+Foreach.swift in Sources */,
 				6B729E9F2ADC521C00BED9FD /* StockProphetApp.swift in Sources */,
