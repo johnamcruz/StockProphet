@@ -55,11 +55,11 @@ struct LinearChartView: View {
             .chartYScale(domain: minPrice...maxPrice)
             .chartXAxisLabel("Date")
             .chartXAxis {
-                AxisMarks()
+                AxisMarks(values: .automatic(desiredCount: 12))
             }
             .chartYAxisLabel("Stock Price")
             .chartYAxis {
-                AxisMarks()
+                AxisMarks(values: .automatic(desiredCount: 12))
             }
             .chartLegend(spacing: 30)
             .chartOverlay { proxy in
