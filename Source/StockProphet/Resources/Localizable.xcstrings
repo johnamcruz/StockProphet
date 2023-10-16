@@ -1,7 +1,7 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Add Item" : {
+    "Add Stock" : {
 
     },
     "close" : {
@@ -22,7 +22,7 @@
     "price" : {
 
     },
-    "Select an item" : {
+    "Select a stock" : {
 
     }
   },

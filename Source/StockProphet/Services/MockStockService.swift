@@ -20,7 +20,7 @@ class MockStockService: StockServiceable {
     var stocks: [Stock] = []
     
     func load() async {
-        guard let filePath = Bundle.main.path(forResource: "AMZN_data", ofType: "csv") else {
+        guard let filePath = Bundle.main.path(forResource: "AAPL_data", ofType: "csv") else {
             return
         }
         

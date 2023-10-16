@@ -16,6 +16,7 @@
 		6B0486532ADCBEC400D30452 /* CandleStickChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0486522ADCBEC400D30452 /* CandleStickChartView.swift */; };
 		6B0486552ADCD0EB00D30452 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0486542ADCD0EB00D30452 /* MainViewModel.swift */; };
 		6B04865A2ADCE62A00D30452 /* LinearChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0486592ADCE62A00D30452 /* LinearChartView.swift */; };
+		6B04865C2ADCEC7C00D30452 /* AAPL_data.csv in Resources */ = {isa = PBXBuildFile; fileRef = 6B04865B2ADCEC7B00D30452 /* AAPL_data.csv */; };
 		6B729E9F2ADC521C00BED9FD /* StockProphetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B729E9E2ADC521C00BED9FD /* StockProphetApp.swift */; };
 		6B729EA12ADC521C00BED9FD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B729EA02ADC521C00BED9FD /* MainView.swift */; };
 		6B729EA52ADC521D00BED9FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B729EA42ADC521D00BED9FD /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		6B0486522ADCBEC400D30452 /* CandleStickChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandleStickChartView.swift; sourceTree = "<group>"; };
 		6B0486542ADCD0EB00D30452 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		6B0486592ADCE62A00D30452 /* LinearChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearChartView.swift; sourceTree = "<group>"; };
+		6B04865B2ADCEC7B00D30452 /* AAPL_data.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AAPL_data.csv; sourceTree = "<group>"; };
 		6B729E9B2ADC521C00BED9FD /* StockProphet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockProphet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B729E9E2ADC521C00BED9FD /* StockProphetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockProphetApp.swift; sourceTree = "<group>"; };
 		6B729EA02ADC521C00BED9FD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 		6B729ECF2ADC560900BED9FD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6B04865B2ADCEC7B00D30452 /* AAPL_data.csv */,
 				6B04864E2ADCB43600D30452 /* AMZN_data.csv */,
 				6B729ED62ADC586100BED9FD /* all_stocks_5yr.csv */,
 				6B729EA42ADC521D00BED9FD /* Assets.xcassets */,
@@ -352,6 +355,7 @@
 			files = (
 				6B04864F2ADCB43600D30452 /* AMZN_data.csv in Resources */,
 				6B729EA92ADC521D00BED9FD /* Preview Assets.xcassets in Resources */,
+				6B04865C2ADCEC7C00D30452 /* AAPL_data.csv in Resources */,
 				6B729EA52ADC521D00BED9FD /* Assets.xcassets in Resources */,
 				6B729ED72ADC586100BED9FD /* all_stocks_5yr.csv in Resources */,
 				6B729ED32ADC581600BED9FD /* Localizable.xcstrings in Resources */,
