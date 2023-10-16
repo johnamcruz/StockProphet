@@ -18,6 +18,9 @@ struct ChartView: View {
                 CandleStickChartView(stocks: viewModel.stocks)
             }
         }
+        .onChange(of: viewModel.timePeriod, initial: false) { old,new in
+            viewModel.updateTimePeriod()
+        }
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Picker("Filter:", selection: $viewModel.timePeriod) {

@@ -15,7 +15,7 @@ enum ChartType: String, CaseIterable {
         switch self {
         case .linear:
             "chart.line.uptrend.xyaxis"
-        default:
+        case .candleStick:
             "chart.bar.fill"
         }
     }
