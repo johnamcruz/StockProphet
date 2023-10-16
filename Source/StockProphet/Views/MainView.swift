@@ -18,22 +18,18 @@ struct MainView: View {
             List {
                 ForEach(items) { item in
                     NavigationLink {
-                        ChartView(stocks: viewModel.service.getAllStocks())
+                        ChartView(viewModel: viewModel.getChartViewModel(symbol: item.ticker))
                     } label: {
                         StockTickerView(stock: item)
                     }
                 }
                 .onDelete(perform: deleteItems)
             }
+            .searchable(text: $viewModel.searchQuery, placement: .toolbar)
 #if os(macOS)
             .navigationSplitViewColumnWidth(min: 180, ideal: 200)
 #endif
             .toolbar {
-#if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-#endif
                 ToolbarItem {
                     Button(action: addItem) {
                         Label("Add Stock", systemImage: "plus")
