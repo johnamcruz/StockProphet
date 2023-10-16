@@ -46,8 +46,9 @@ struct LinearChartView: View {
             .chartYAxis() {
                 AxisMarks(position: .leading)
             }
-            .frame(width: width, height: height)
+            .frame(width: Constants.dataPointWidth * CGFloat(stocks.count))
         }
+        .frame(width: width, height: height)
         .padding()
     }
 }
