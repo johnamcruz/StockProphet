@@ -16,7 +16,8 @@ struct LinearChartView: View {
             ForEach(stocks) { stock in
                 LineMark(
                     x: .value("date", stock.date),
-                    y: .value("price", stock.close)
+                    y: .value("price", stock.close),
+                    series: .value("Actual", stock.name)
                 )
                 .foregroundStyle(.blue)
                 PointMark(
@@ -28,13 +29,10 @@ struct LinearChartView: View {
             ForEach(stocks) { stock in
                 LineMark(
                     x: .value("date", stock.date),
-                    y: .value("price", stock.prediction ?? 0)
+                    y: .value("price", stock.prediction ?? 0),
+                    series: .value("Prediction", stock.name)
                 )
                 .foregroundStyle(.green)
-                PointMark(
-                    x: .value("date", stock.date),
-                    y: .value("price", stock.prediction ?? 0)
-                )
             }
             
             RuleMark(
