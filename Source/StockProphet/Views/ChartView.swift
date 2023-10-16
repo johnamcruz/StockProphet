@@ -11,19 +11,30 @@ struct ChartView: View {
     @Bindable var viewModel: ChartViewModel
     
     var body: some View {
-        TabView {
-            LinearChartView(stocks: viewModel.stocks)
-            CandleStickChartView(stocks: viewModel.stocks)
+        VStack(spacing: 0) {
+            if viewModel.type == .linear {
+                LinearChartView(stocks: viewModel.stocks)
+            } else {
+                CandleStickChartView(stocks: viewModel.stocks)
+            }
         }
         .toolbar {
             ToolbarItem(placement: .principal) {
-                Picker("Filter:", selection: $viewModel.filterSelection) {
-                      Text("1D").tag("1 day")
-                      Text("1W").tag("1 week")
-                      Text("1M").tag("1 month")
-                      Text("3M").tag("3 months")
-                      Text("1Y").tag("1 year")
-                      Text("5Y").tag("5 years")
+                Picker("Filter:", selection: $viewModel.timePeriod) {
+                    ForEach (TimePeriod.allCases, id: \.rawValue) { period in
+                        Text(period.title).tag(period)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .labelsHidden()
+            }
+            
+            ToolbarItem(placement: .principal) {
+                Picker("Type", selection: $viewModel.type) {
+                    ForEach(ChartType.allCases, id: \.rawValue) { type in
+                        Image(systemName: type.icon)
+                            .tag(type)
+                    }
                 }
                 .pickerStyle(.segmented)
                 .labelsHidden()

@@ -1,18 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "1 day" : {
-
-    },
-    "1 month" : {
-
-    },
-    "1 week" : {
-
-    },
-    "1 year" : {
-
-    },
     "1D" : {
 
     },
@@ -25,13 +13,7 @@
     "1Y" : {
 
     },
-    "3 months" : {
-
-    },
     "3M" : {
-
-    },
-    "5 years" : {
 
     },
     "5Y" : {
@@ -62,6 +44,9 @@
 
     },
     "Select a stock" : {
+
+    },
+    "Type" : {
 
     }
   },

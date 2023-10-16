@@ -10,10 +10,10 @@ import Foundation
 @Observable
 class ChartViewModel {
     var stocks: [Stock]
-    var filterSelection: String = ""
+    var timePeriod: TimePeriod = .OneDay
+    var type: ChartType = .linear
     
-    init(stocks: [Stock], filterSelection: String = "") {
+    init(stocks: [Stock]) {
         self.stocks = stocks
-        self.filterSelection = filterSelection
     }
 }
