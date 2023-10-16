@@ -11,14 +11,14 @@ import SwiftData
 struct MainView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [StockItem]
-    let service = MockStockService()
+    @State private var viewModel = MainViewModel()
 
     var body: some View {
         NavigationSplitView {
             List {
                 ForEach(items) { item in
                     NavigationLink {
-                        ChartView(stocks: service.getStock(ticker: item.ticker))
+                        ChartView(stocks: viewModel.service.getStock(ticker: item.ticker))
                     } label: {
                         StockTickerView(stock: item)
                     }
@@ -44,7 +44,19 @@ struct MainView: View {
             Text("Select an item")
         }
         .task {
-            await service.load()
+            await viewModel.load()
+        }
+        .overlay {
+            if viewModel.isLoading {
+                Rectangle()
+                    .background(.clear.opacity(0.8))
+                    .overlay {
+                        VStack(alignment: .center) {
+                            ProgressView()
+                                .progressViewStyle(.circular)
+                        }
+                    }
+            }
         }
     }
 
