@@ -14,6 +14,8 @@ struct LinearChartView: View {
     var height: CGFloat
     var startDate: Date
     var endDate: Date
+    var minPrice: Double
+    var maxPrice: Double
     
     var body: some View {
         ScrollView(.horizontal) {
@@ -43,6 +45,7 @@ struct LinearChartView: View {
                 .foregroundStyle(.red)
             }
             .chartXScale(domain: startDate...endDate)
+            .chartYScale(domain: minPrice...maxPrice)
             .chartYAxis() {
                 AxisMarks(position: .leading)
             }
@@ -57,5 +60,7 @@ struct LinearChartView: View {
     LinearChartView(width: 400,
                     height: 400,
                     startDate: Date(),
-                    endDate: Date())
+                    endDate: Date(),                    
+                    minPrice: 0,
+                    maxPrice: 100)
 }

@@ -19,7 +19,7 @@ class ChartViewModel {
     var selectedDate: Date = Date.toDate(date: "2018-01-05") ?? Date()
     var zoomDate: Date {
         // Calculate the start and end dates for each time period.
-        guard let oneDayAgo = Calendar.current.date(byAdding: .day, value: -1, to: selectedDate),
+        guard /*let oneDayAgo = Calendar.current.date(byAdding: .day, value: -1, to: selectedDate),*/
               let oneWeekAgo = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: selectedDate),
               let oneMonthAgo = Calendar.current.date(byAdding: .month, value: -1, to: selectedDate),
               let threeMonthAgo = Calendar.current.date(byAdding: .month, value: -3, to: selectedDate),
@@ -42,6 +42,12 @@ class ChartViewModel {
         case .FiveYear:
             return fiveYearsAgo
         }
+    }
+    var maxPrice: Double {
+        stocks.reduce(Double.zero) { max($0, $1.close) } + 10
+    }
+    var minPrice: Double {
+        stocks.reduce(Double.zero) { min($0, $1.close) } - 10
     }
     
     init(stocks: [Stock]) {
