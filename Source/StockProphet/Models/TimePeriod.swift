@@ -8,7 +8,7 @@
 import Foundation
 
 enum TimePeriod: String, CaseIterable {
-    case OneDay
+    //case OneDay
     case OneWeek
     case OneMonth
     case ThreeMonths
@@ -17,8 +17,8 @@ enum TimePeriod: String, CaseIterable {
     
     var title: String {
         switch self {
-        case .OneDay:
-            "1D"
+        /*case .OneDay:
+            "1D"*/
         case .OneWeek:
             "1W"
         case .OneMonth:

@@ -14,7 +14,7 @@ enum ChartViewModelError: Error {
 @Observable
 class ChartViewModel {
     var stocks: [Stock]
-    var timePeriod: TimePeriod = .OneDay
+    var timePeriod: TimePeriod = .FiveYear
     var type: ChartType = .linear
     var selectedDate: Date = Date.toDate(date: "2018-01-05") ?? Date()
     
@@ -22,7 +22,7 @@ class ChartViewModel {
         self.stocks = stocks
     }
     
-    func updateTimePeriod() {
+    var filterStocks: [Stock] {
         var stocks: [Stock] = []
         do {
             let previousDate = try getRange()
@@ -30,23 +30,23 @@ class ChartViewModel {
         } catch {
             
         }
-        self.stocks = stocks
+        return stocks
     }
     
     func getRange() throws -> Date {
         // Calculate the start and end dates for each time period.
         guard let oneDayAgo = Calendar.current.date(byAdding: .day, value: -1, to: selectedDate),
-        let oneWeekAgo = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: selectedDate),
-        let oneMonthAgo = Calendar.current.date(byAdding: .month, value: -1, to: selectedDate),
-        let threeMonthAgo = Calendar.current.date(byAdding: .month, value: -3, to: selectedDate),
-        let oneYearAgo = Calendar.current.date(byAdding: .year, value: -1, to: selectedDate),
-              let fiveYearsAgo = Calendar.current.date(byAdding: .day, value: -5, to: selectedDate) else {
+              let oneWeekAgo = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: selectedDate),
+              let oneMonthAgo = Calendar.current.date(byAdding: .month, value: -1, to: selectedDate),
+              let threeMonthAgo = Calendar.current.date(byAdding: .month, value: -3, to: selectedDate),
+              let oneYearAgo = Calendar.current.date(byAdding: .year, value: -1, to: selectedDate),
+              let fiveYearsAgo = Calendar.current.date(byAdding: .year, value: -5, to: selectedDate) else {
             throw ChartViewModelError.dateRangeError
         }
-
+        
         switch timePeriod {
-        case .OneDay:
-            return oneDayAgo
+            /*case .OneDay:
+             return oneDayAgo*/
         case .OneWeek:
             return oneWeekAgo
         case .OneMonth:

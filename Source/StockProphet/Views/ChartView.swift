@@ -13,13 +13,10 @@ struct ChartView: View {
     var body: some View {
         VStack(spacing: 0) {
             if viewModel.type == .linear {
-                LinearChartView(stocks: viewModel.stocks)
+                LinearChartView(stocks: viewModel.filterStocks)
             } else {
-                CandleStickChartView(stocks: viewModel.stocks)
+                CandleStickChartView(stocks: viewModel.filterStocks)
             }
-        }
-        .onChange(of: viewModel.timePeriod, initial: false) { old,new in
-            viewModel.updateTimePeriod()
         }
         .toolbar {
             ToolbarItem(placement: .principal) {
