@@ -40,10 +40,16 @@
     "open" : {
 
     },
+    "Prediction" : {
+
+    },
     "price" : {
 
     },
     "Select a stock" : {
+
+    },
+    "Threshold" : {
 
     },
     "Type" : {

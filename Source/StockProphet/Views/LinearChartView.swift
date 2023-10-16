@@ -46,8 +46,13 @@ struct LinearChartView: View {
             }
             .chartXScale(domain: startDate...endDate)
             .chartYScale(domain: minPrice...maxPrice)
-            .chartYAxis() {
-                AxisMarks(position: .leading)
+            .chartXAxisLabel("Date")
+            .chartXAxis {
+                AxisMarks()
+            }
+            .chartYAxisLabel("Stock Price")
+            .chartYAxis {
+                AxisMarks()
             }
             .frame(width: Constants.dataPointWidth * CGFloat(stocks.count))
         }
