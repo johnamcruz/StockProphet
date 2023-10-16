@@ -20,10 +20,6 @@ struct LinearChartView: View {
                     series: .value("Actual", stock.name)
                 )
                 .foregroundStyle(.blue)
-                PointMark(
-                    x: .value("date", stock.date),
-                    y: .value("price", stock.close)
-                )
             }
             
             ForEach(stocks) { stock in
@@ -33,6 +29,7 @@ struct LinearChartView: View {
                     series: .value("Prediction", stock.name)
                 )
                 .foregroundStyle(.green)
+                .lineStyle(StrokeStyle(lineWidth: 3, dash: [5, 10]))
             }
             
             RuleMark(
