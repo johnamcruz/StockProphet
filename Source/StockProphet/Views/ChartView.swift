@@ -6,23 +6,14 @@
 //
 
 import SwiftUI
-import Charts
 
 struct ChartView: View {
     var stocks: [Stock] = []
     
     var body: some View {
-        Chart {
-            ForEach(stocks) { stock in
-                LineMark(
-                    x: .value("date", stock.date),
-                    y: .value("price", stock.close)
-                )
-                PointMark(
-                    x: .value("date", stock.date),
-                    y: .value("price", stock.close)
-                )
-            }
+        TabView {
+            LinearChartView(stocks: stocks)
+            CandleStickChartView(stocks: stocks)
         }
     }
 }

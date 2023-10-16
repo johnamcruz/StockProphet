@@ -10,7 +10,7 @@ import Foundation
 struct Stock: Codable, Identifiable {
     var id: String = UUID().uuidString
     var name: String
-    var volume: Int
+    var volume: Float
     var date: Date
     var open: Decimal
     var close: Decimal

@@ -18,7 +18,7 @@ struct MainView: View {
             List {
                 ForEach(items) { item in
                     NavigationLink {
-                        ChartView(stocks: viewModel.service.getStock(ticker: item.ticker))
+                        ChartView(stocks: viewModel.service.getAllStocks())
                     } label: {
                         StockTickerView(stock: item)
                     }

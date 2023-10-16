@@ -10,6 +10,8 @@ import Algorithms
 
 enum StockServiceError: Error {
     case BadData
+    case InvalidColumns
+    case StockParsingFailed
 }
 
 class MockStockService: StockServiceable {
@@ -18,30 +20,36 @@ class MockStockService: StockServiceable {
     var stocks: [Stock] = []
     
     func load() async {
-        guard let filePath = Bundle.main.path(forResource: "all_stocks_5yr", ofType: "csv") else {
+        guard let filePath = Bundle.main.path(forResource: "AMZN_data", ofType: "csv") else {
             return
         }
         
         do {
-            stocks = try await withThrowingTaskGroup(of: Stock.self, returning: [Stock].self) { group in
+            stocks = try await withThrowingTaskGroup(of: Stock?.self, returning: [Stock].self) { group in
                 let rows = try getStockRows(filePath: filePath)
                 
                 for row in rows {
                     group.addTask {
-                        try self.parseStockRow(row: row)
+                        do {
+                            return try self.parseStockRow(row: row)
+                        }
+                        catch {
+                            return nil
+                        }
                     }
                 }
                 
                 var stocks: [Stock] = []
                 for try await stock in group {
-                    stocks.append(stock)
+                    if let stock = stock {
+                        stocks.append(stock)
+                    }
                 }
                 return stocks
             }
             
         } catch {
-            // contents could not be loaded
-            print("data cannot be loaded")
+            print(error.localizedDescription)
         }
     }
     
@@ -66,22 +74,30 @@ class MockStockService: StockServiceable {
         }
         let columns = row.components(separatedBy: MockStockService.comma)
         guard columns.count > 0 else {
-            throw StockServiceError.BadData
+            throw StockServiceError.InvalidColumns
+        }
+        guard let date = Date.toDate(date: columns[0]),
+              let openPrice = Decimal(string: columns[1]),
+              let highPrice = Decimal(string: columns[2]),
+              let lowPrice = Decimal(string: columns[3]),
+              let closePrice = Decimal(string: columns[4]),
+              let volume = Float(columns[5]) else {
+            throw StockServiceError.StockParsingFailed
         }
         return Stock(name: columns[6],
-                     volume: Int(columns[5]) ?? 0,
-                     date: Date.toDate(date: columns[0]) ?? Date(),
-                     open: Decimal(string: columns[1]) ?? 0,
-                     close: Decimal(string: columns[4]) ?? 0,
-                     high: Decimal(string: columns[2]) ?? 0,
-                     low: Decimal(string: columns[3]) ?? 0)
+                     volume: volume,
+                     date: date,
+                     open: openPrice,
+                     close: closePrice,
+                     high: highPrice,
+                     low: lowPrice)
     }
 }
 
 extension Date {
     static func toDate(date: String) -> Date? {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.date(from: date)
     }
 }
