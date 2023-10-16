@@ -44,10 +44,10 @@ class ChartViewModel {
         }
     }
     var maxPrice: Double {
-        stocks.reduce(Double.zero) { max($0, $1.close) } + 10
+        stocks.reduce(Double.zero) { max($0, $1.close) } + 5
     }
     var minPrice: Double {
-        stocks.reduce(Double.zero) { min($0, $1.close) } - 10
+        stocks.reduce(Double.zero) { min($0, $1.close) } - 5
     }
     
     init(stocks: [Stock]) {
