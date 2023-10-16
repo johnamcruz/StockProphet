@@ -17,12 +17,7 @@ class ChartViewModel {
     var timePeriod: TimePeriod = .FiveYear
     var type: ChartType = .linear
     var selectedDate: Date = Date.toDate(date: "2018-01-05") ?? Date()
-    
-    init(stocks: [Stock]) {
-        self.stocks = stocks
-    }
-    
-    func getRange() throws -> Date {
+    var zoomDate: Date {
         // Calculate the start and end dates for each time period.
         guard let oneDayAgo = Calendar.current.date(byAdding: .day, value: -1, to: selectedDate),
               let oneWeekAgo = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: selectedDate),
@@ -30,7 +25,7 @@ class ChartViewModel {
               let threeMonthAgo = Calendar.current.date(byAdding: .month, value: -3, to: selectedDate),
               let oneYearAgo = Calendar.current.date(byAdding: .year, value: -1, to: selectedDate),
               let fiveYearsAgo = Calendar.current.date(byAdding: .year, value: -5, to: selectedDate) else {
-            throw ChartViewModelError.dateRangeError
+            return selectedDate
         }
         
         switch timePeriod {
@@ -47,5 +42,9 @@ class ChartViewModel {
         case .FiveYear:
             return fiveYearsAgo
         }
+    }
+    
+    init(stocks: [Stock]) {
+        self.stocks = stocks
     }
 }

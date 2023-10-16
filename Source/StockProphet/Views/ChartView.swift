@@ -16,9 +16,11 @@ struct ChartView: View {
                 if viewModel.type == .linear {
                     LinearChartView(stocks: viewModel.stocks,
                                     width: reader.size.width,
-                                    height: reader.size.height)
+                                    height: reader.size.height,
+                                    startDate: viewModel.zoomDate,
+                                    endDate: viewModel.selectedDate)
                 } else {
-                    CandleStickChartView(stocks: viewModel.stocks, 
+                    CandleStickChartView(stocks: viewModel.stocks,
                                          width: reader.size.width,
                                          height: reader.size.height)
                 }
@@ -28,7 +30,8 @@ struct ChartView: View {
             ToolbarItem(placement: .principal) {
                 Picker("Filter:", selection: $viewModel.timePeriod) {
                     ForEach (TimePeriod.allCases, id: \.rawValue) { period in
-                        Text(period.title).tag(period)
+                        Text(period.title)
+                            .tag(period)
                     }
                 }
                 .pickerStyle(.segmented)
