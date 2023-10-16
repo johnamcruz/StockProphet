@@ -26,7 +26,7 @@ class ChartViewModel {
         var stocks: [Stock] = []
         do {
             let previousDate = try getRange()
-            stocks = stocks.filter { $0.date >= previousDate && $0.date <= selectedDate }
+            stocks = self.stocks.filter { $0.date >= previousDate && $0.date <= selectedDate }
         } catch {
             
         }
