@@ -1,0 +1,30 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Add Item" : {
+
+    },
+    "close" : {
+
+    },
+    "date" : {
+
+    },
+    "high" : {
+
+    },
+    "low" : {
+
+    },
+    "open" : {
+
+    },
+    "price" : {
+
+    },
+    "Select an item" : {
+
+    }
+  },
+  "version" : "1.0"
+}

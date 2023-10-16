@@ -1,0 +1,27 @@
+{
+  "Outputs" : {
+    "close" : {
+      "MLFeatureShortDescription" : "--"
+    }
+  },
+  "Inputs" : {
+    "low" : {
+      "MLFeatureShortDescription" : "--"
+    },
+    "high" : {
+      "MLFeatureShortDescription" : "--"
+    },
+    "volume" : {
+      "MLFeatureShortDescription" : "--"
+    },
+    "open" : {
+      "MLFeatureShortDescription" : "--"
+    },
+    "date" : {
+      "MLFeatureShortDescription" : "--"
+    }
+  },
+  "TrainingInputs" : {
+
+  }
+}
