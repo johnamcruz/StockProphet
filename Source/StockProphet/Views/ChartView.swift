@@ -18,9 +18,6 @@ struct ChartView: View {
                 CandleStickChartView(stocks: viewModel.filterStocks)
             }
         }
-        .task {
-            try? await viewModel.runPredictions()
-        }
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Picker("Filter:", selection: $viewModel.timePeriod) {

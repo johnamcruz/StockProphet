@@ -12,16 +12,28 @@ import SwiftUI
 class MainViewModel {
     let service = MockStockService()
     
+    var stocks: [Stock] = []
     var isLoading: Bool = false
     var searchQuery: String = ""
     
     func load() async {
         isLoading = true
         await service.load()
+        stocks = service.getAllStocks()
+        try? await runPrediction()
         isLoading = false
     }
     
     func getChartViewModel(symbol: String) -> ChartViewModel {
-        ChartViewModel(stocks: service.getAllStocks())
+        ChartViewModel(stocks: stocks)
+    }
+    
+    func runPrediction() async throws {
+        do {
+            let prediction = try StockPredictionService()
+            stocks = try await prediction.predict(original: stocks)
+        } catch {
+            print("predictions failed")
+        }
     }
 }

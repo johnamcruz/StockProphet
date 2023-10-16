@@ -17,10 +17,8 @@ class ChartViewModel {
     var timePeriod: TimePeriod = .FiveYear
     var type: ChartType = .linear
     var selectedDate: Date = Date.toDate(date: "2018-01-05") ?? Date()
-    var predictions: StockPredictionService?
     
     init(stocks: [Stock]) {
-        predictions = try? StockPredictionService()
         self.stocks = stocks
     }
     
@@ -33,12 +31,6 @@ class ChartViewModel {
             
         }
         return stocks
-    }
-    
-    func runPredictions() async throws {
-        if let predictions {
-            self.stocks = try await predictions.predict(original: self.stocks)
-        }
     }
     
     func getRange() throws -> Date {
