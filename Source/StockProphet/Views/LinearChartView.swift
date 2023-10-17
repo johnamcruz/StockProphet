@@ -23,6 +23,7 @@ struct LinearChartView: View {
                         x: .value("date", stock.date),
                         y: .value("price", stock.close)
                     )
+                    .foregroundStyle(Color.forestGreen)
                     
                     if let hoverDate {
                         RuleMark(x: .value("Date", hoverDate))

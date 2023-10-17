@@ -20,7 +20,7 @@ struct StockTickerView: View {
             }
             Spacer()
             RoundedRectangle(cornerRadius: 4.0)
-                .fill(Color.green)
+                .fill(Color.forestGreen)
                 .frame(width: 80, height: 30)
                 .overlay {
                     Text(stock.price.formatted(.currency(code: "USD")))
