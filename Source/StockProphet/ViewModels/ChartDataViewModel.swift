@@ -20,12 +20,12 @@ extension ChartDataViewModel {
     static var mock: ChartDataViewModel {
         let stocks = [
             Stock(name: "AAPL", volume: 1000, date: Date.toDate(date: "2023-01-01")!, open: 100, close: 100, high: 100, low: 100),
-            Stock(name: "AAPL", volume: 1000, date: Date.toDate(date: "2023-01-02")!, open: 100, close: 101, high: 100, low: 100),
-            Stock(name: "AAPL", volume: 1000, date: Date.toDate(date: "2023-01-03")!, open: 100, close: 103, high: 100, low: 100),
-            Stock(name: "AAPL", volume: 1000, date: Date.toDate(date: "2023-01-04")!, open: 100, close: 108, high: 100, low: 100),
-            Stock(name: "AAPL", volume: 1000, date: Date.toDate(date: "2023-01-05")!, open: 100, close: 100, high: 100, low: 100),
+            Stock(name: "AAPL", volume: 1000, date: Date.toDate(date: "2023-01-02")!, open: 100, close: 119, high: 100, low: 100),
+            Stock(name: "AAPL", volume: 1000, date: Date.toDate(date: "2023-01-03")!, open: 100, close: 120, high: 100, low: 100),
+            Stock(name: "AAPL", volume: 1000, date: Date.toDate(date: "2023-01-04")!, open: 100, close: 128, high: 100, low: 100),
+            Stock(name: "AAPL", volume: 1000, date: Date.toDate(date: "2023-01-05")!, open: 100, close: 150, high: 100, low: 100),
             Stock(name: "AAPL", volume: 1000, date: Date.toDate(date: "2023-01-06")!, open: 100, close: 120, high: 100, low: 100),
-            Stock(name: "AAPL", volume: 1000, date: Date.toDate(date: "2023-01-07")!, open: 100, close: 101, high: 100, low: 100),
+            Stock(name: "AAPL", volume: 1000, date: Date.toDate(date: "2023-01-07")!, open: 100, close: 190, high: 100, low: 100),
             Stock(name: "AAPL", volume: 1000, date: Date.toDate(date: "2023-01-08")!, open: 100, close: 104, high: 100, low: 100),
             Stock(name: "AAPL", volume: 1000, date: Date.toDate(date: "2023-01-09")!, open: 100, close: 109, high: 100, low: 100),
             Stock(name: "AAPL", volume: 1000, date: Date.toDate(date: "2023-01-10")!, open: 100, close: 108, high: 100, low: 100),
@@ -38,7 +38,7 @@ extension ChartDataViewModel {
         return ChartDataViewModel(stocks: stocks,
                            startDate: Date.toDate(date: "2023-01-01")!,
                            endDate: Date.toDate(date: "2023-01-15")!,
-                           minPrice: 100,
+                           minPrice: 0,
                            maxPrice: 200,
                            movingAverage: 150)
     }

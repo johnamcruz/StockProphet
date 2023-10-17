@@ -21,17 +21,8 @@ struct LinearChartView: View {
                 ForEach(viewModel.stocks) { stock in
                     LineMark(
                         x: .value("date", stock.date),
-                        y: .value("price", stock.close),
-                        series: .value("Actual", stock.name)
+                        y: .value("price", stock.close)
                     )
-                    
-                    LineMark(
-                        x: .value("date", stock.date),
-                        y: .value("price", stock.prediction ?? 0),
-                        series: .value("Prediction", stock.name)
-                    )
-                    .foregroundStyle(.orange)
-                    .lineStyle(StrokeStyle(lineWidth: 3, dash: [5, 10]))
                     
                     if let hoverDate {
                         RuleMark(x: .value("Date", hoverDate))
