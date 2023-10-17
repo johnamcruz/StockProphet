@@ -50,7 +50,7 @@ class ChartViewModel {
     }
     
     var data: ChartDataViewModel {
-        ChartDataViewModel(stocks: stocks, 
+        ChartDataViewModel(stocks: stocks,
                            zoom: 0...30,
                            minPrice: minPrice,
                            maxPrice: maxPrice,

@@ -26,6 +26,8 @@ struct LinearChartView: View {
                     y: .value("price", stock.close)
                 )
                 .foregroundStyle(.green)
+                .symbol(.circle)
+                .symbolSize(Constants.dotSize)
                 
                 AreaMark(
                     x: .value("date", stock.date),
