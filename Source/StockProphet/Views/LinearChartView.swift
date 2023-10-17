@@ -11,7 +11,8 @@ import Charts
 struct LinearChartView: View {
     let viewModel: ChartDataViewModel
     
-    @State var hoverDate: Date?
+    @State private var hoverDate: Date?
+    @State private var scrollPosition = 50
     
     let linearGradient = LinearGradient(gradient: Gradient(colors: [Color.forestGreen.opacity(0.4),
                                                                     Color.forestGreen.opacity(0)]),
@@ -45,8 +46,8 @@ struct LinearChartView: View {
                             overflowResolution: .init(
                                 x: .fit(to: .chart),
                                 y: .disabled)) {
-                            Text(hoverDate.formatted())
-                        }
+                                    Text(hoverDate.formatted())
+                                }
                 }
             }
             
@@ -68,6 +69,7 @@ struct LinearChartView: View {
         .chartXSelection(value: $hoverDate)
         .chartScrollableAxes(.horizontal)
         .chartScrollTargetBehavior(.valueAligned(unit: 1))
+        .chartScrollPosition(x: $scrollPosition)
     }
 }
 
