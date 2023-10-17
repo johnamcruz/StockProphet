@@ -30,7 +30,16 @@ struct CandleStickChartView: View {
                     
                     if let hoverDate {
                         RuleMark(x: .value("Date", hoverDate))
-                            .foregroundStyle(.gray)
+                            .foregroundStyle(Color.gray.opacity(0.3))
+                            .offset(yStart: -10)
+                            .zIndex(-1)
+                            .annotation(
+                                position: .top, spacing: 0,
+                                overflowResolution: .init(
+                                    x: .fit(to: .chart),
+                                    y: .disabled)) {
+                                Text(hoverDate.formatted())
+                            }
                     }
                 }
                 
@@ -49,18 +58,8 @@ struct CandleStickChartView: View {
             .chartYAxis {
                 AxisMarks(values: .automatic(desiredCount: 12))
             }
+            .chartXSelection(value: $hoverDate)
             .chartLegend(spacing: 30)
-            .chartOverlay { proxy in
-                Color.clear
-                    .onContinuousHover { phase in
-                        switch phase {
-                        case let .active(location):
-                            hoverDate = proxy.value(atX: location.x, as: Date.self)
-                        case .ended:
-                            hoverDate = nil
-                        }
-                    }
-            }
             .frame(width: Constants.dataPointWidth * CGFloat(viewModel.stocks.count))
         }
         .frame(width: width, height: height)
