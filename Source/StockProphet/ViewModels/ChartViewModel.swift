@@ -53,4 +53,20 @@ class ChartViewModel {
     init(stocks: [Stock]) {
         self.stocks = stocks
     }
+    
+    var movingAverage: Double {
+        let sum = stocks.reduce(Double.zero) { $0 + $1.close }
+        let range = Calendar.current.dateComponents([.day], from: zoomDate, to: selectedDate)
+        return (sum / Double(range.day ?? 1))
+    }
+    
+    var data: ChartDataViewModel {
+        ChartDataViewModel(stocks: stocks,
+                           startDate: zoomDate,
+                           endDate: selectedDate,
+                           minPrice: minPrice,
+                           maxPrice: maxPrice,
+                           movingAverage: movingAverage)
+
+    }
 }

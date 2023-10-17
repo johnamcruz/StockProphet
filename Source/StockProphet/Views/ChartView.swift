@@ -14,13 +14,9 @@ struct ChartView: View {
         VStack(spacing: 0) {
             GeometryReader { reader in
                 if viewModel.type == .linear {
-                    LinearChartView(stocks: viewModel.stocks,
+                    LinearChartView(viewModel: viewModel.data,
                                     width: reader.size.width,
-                                    height: reader.size.height,
-                                    startDate: viewModel.zoomDate,
-                                    endDate: viewModel.selectedDate,
-                                    minPrice: viewModel.minPrice,
-                                    maxPrice: viewModel.maxPrice)
+                                    height: reader.size.height)
                 } else {
                     CandleStickChartView(stocks: viewModel.stocks,
                                          width: reader.size.width,

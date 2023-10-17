@@ -9,20 +9,16 @@ import SwiftUI
 import Charts
 
 struct LinearChartView: View {
-    var stocks: [Stock] = []
-    var width: CGFloat
-    var height: CGFloat
-    var startDate: Date
-    var endDate: Date
-    var minPrice: Double
-    var maxPrice: Double
+    let viewModel: ChartDataViewModel
+    let width: CGFloat
+    let height: CGFloat
     
     @State var hoverDate: Date?
     
     var body: some View {
         ScrollView(.horizontal) {
             Chart {
-                ForEach(stocks) { stock in
+                ForEach(viewModel.stocks) { stock in
                     LineMark(
                         x: .value("date", stock.date),
                         y: .value("price", stock.close),
@@ -30,29 +26,27 @@ struct LinearChartView: View {
                     )
                     .foregroundStyle(.blue)
                     
+                    LineMark(
+                        x: .value("date", stock.date),
+                        y: .value("price", stock.prediction ?? 0),
+                        series: .value("Prediction", stock.name)
+                    )
+                    .foregroundStyle(.orange)
+                    .lineStyle(StrokeStyle(lineWidth: 3, dash: [5, 10]))
+                    
                     if let hoverDate {
                         RuleMark(x: .value("Date", hoverDate))
                             .foregroundStyle(.gray)
                     }
                 }
                 
-                /*ForEach(stocks) { stock in
-                    LineMark(
-                        x: .value("date", stock.date),
-                        y: .value("price", stock.prediction ?? 0),
-                        series: .value("Prediction", stock.name)
-                    )
-                    .foregroundStyle(.green)
-                    .lineStyle(StrokeStyle(lineWidth: 3, dash: [5, 10]))
-                }*/
-                
                 RuleMark(
-                    y: .value("Threshold", 100)
+                    y: .value("Threshold", viewModel.movingAverage)
                 )
                 .foregroundStyle(.red)
             }
-            .chartXScale(domain: startDate...endDate)
-            .chartYScale(domain: minPrice...maxPrice)
+            .chartXScale(domain: viewModel.startDate...viewModel.endDate)
+            .chartYScale(domain: viewModel.minPrice...viewModel.maxPrice)
             .chartXAxisLabel("Date")
             .chartXAxis {
                 AxisMarks(values: .automatic(desiredCount: 12))
@@ -73,7 +67,7 @@ struct LinearChartView: View {
                         }
                     }
             }
-            .frame(width: Constants.dataPointWidth * CGFloat(stocks.count))
+            .frame(width: Constants.dataPointWidth * CGFloat(viewModel.stocks.count))
         }
         .frame(width: width, height: height)
         .padding()
@@ -81,10 +75,7 @@ struct LinearChartView: View {
 }
 
 #Preview {
-    LinearChartView(width: 400,
-                    height: 400,
-                    startDate: Date(),
-                    endDate: Date(),
-                    minPrice: 0,
-                    maxPrice: 100)
+    LinearChartView(viewModel: ChartDataViewModel.mock,
+                    width: 100,
+                    height: 100)
 }
