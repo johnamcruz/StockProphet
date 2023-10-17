@@ -56,20 +56,10 @@ struct LinearChartView: View {
                 AxisMarks(preset: .extended, position: .leading, values: .automatic(desiredCount: 12))
             }
             .chartLegend(spacing: 30)
-            .chartOverlay { proxy in
-                Color.clear
-                    .onContinuousHover { phase in
-                        switch phase {
-                        case let .active(location):
-                            hoverDate = proxy.value(atX: location.x, as: Date.self)
-                        case .ended:
-                            hoverDate = nil
-                        }
-                    }
-            }
             .frame(width: Constants.dataPointWidth * CGFloat(viewModel.stocks.count))
         }
         .frame(width: width, height: height)
+        .chartXSelection(value: $hoverDate)
         .padding()
     }
 }
