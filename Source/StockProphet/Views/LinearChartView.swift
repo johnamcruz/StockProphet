@@ -53,7 +53,7 @@ struct LinearChartView: View {
             }
             .chartYAxisLabel("Stock Price")
             .chartYAxis {
-                AxisMarks(values: .automatic(desiredCount: 12))
+                AxisMarks(preset: .extended, position: .leading, values: .automatic(desiredCount: 12))
             }
             .chartLegend(spacing: 30)
             .chartOverlay { proxy in
