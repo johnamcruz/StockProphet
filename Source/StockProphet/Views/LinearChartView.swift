@@ -36,7 +36,16 @@ struct LinearChartView: View {
                     
                     if let hoverDate {
                         RuleMark(x: .value("Date", hoverDate))
-                            .foregroundStyle(.gray)
+                            .foregroundStyle(Color.gray.opacity(0.3))
+                            .offset(yStart: -10)
+                            .zIndex(-1)
+                            .annotation(
+                                position: .top, spacing: 0,
+                                overflowResolution: .init(
+                                    x: .fit(to: .chart),
+                                    y: .disabled)) {
+                                Text(hoverDate.formatted())
+                            }
                     }
                 }
                 
