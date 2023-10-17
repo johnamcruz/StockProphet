@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ChartType: String, CaseIterable {
+enum ChartType: String, CaseIterable, Identifiable {
     case linear
     case candleStick
     
@@ -18,5 +18,9 @@ enum ChartType: String, CaseIterable {
         case .candleStick:
             "chart.bar.fill"
         }
+    }
+    
+    var id: Self {
+        return self
     }
 }

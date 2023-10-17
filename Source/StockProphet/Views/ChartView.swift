@@ -27,7 +27,7 @@ struct ChartView: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Picker("Filter:", selection: $viewModel.timePeriod) {
-                    ForEach (TimePeriod.allCases, id: \.rawValue) { period in
+                    ForEach (TimePeriod.allCases) { period in
                         Text(period.title)
                             .tag(period)
                     }
@@ -38,7 +38,7 @@ struct ChartView: View {
             
             ToolbarItem(placement: .principal) {
                 Picker("Type", selection: $viewModel.type) {
-                    ForEach(ChartType.allCases, id: \.rawValue) { type in
+                    ForEach(ChartType.allCases) { type in
                         Image(systemName: type.icon)
                             .tag(type)
                     }

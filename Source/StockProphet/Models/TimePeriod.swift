@@ -7,13 +7,17 @@
 
 import Foundation
 
-enum TimePeriod: String, CaseIterable {
+enum TimePeriod: String, CaseIterable,Identifiable {
     //case OneDay
     case OneWeek
     case OneMonth
     case ThreeMonths
     case OneYear
     case FiveYear
+    
+    var id: Self {
+        return self
+    }
     
     var title: String {
         switch self {
