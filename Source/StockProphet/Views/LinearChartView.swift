@@ -24,7 +24,6 @@ struct LinearChartView: View {
                         y: .value("price", stock.close),
                         series: .value("Actual", stock.name)
                     )
-                    .foregroundStyle(.blue)
                     
                     LineMark(
                         x: .value("date", stock.date),
