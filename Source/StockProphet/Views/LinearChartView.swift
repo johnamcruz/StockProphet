@@ -10,8 +10,6 @@ import Charts
 
 struct LinearChartView: View {
     let viewModel: ChartDataViewModel
-    let width: CGFloat
-    let height: CGFloat
     
     @State var hoverDate: Date?
     
@@ -21,62 +19,55 @@ struct LinearChartView: View {
                                         endPoint: .bottom)
     
     var body: some View {
-        ScrollView(.horizontal) {
-            Chart {
-                ForEach(viewModel.stocks) { stock in
-                    LineMark(
-                        x: .value("date", stock.date),
-                        y: .value("price", stock.close)
-                    )
-                    .interpolationMethod(.cardinal)
-                    
-                    AreaMark(
-                        x: .value("date", stock.date),
-                        y: .value("price", stock.close)
-                    )
-                    .interpolationMethod(.cardinal)
-                    .foregroundStyle(linearGradient)
-                    
-                    if let hoverDate {
-                        RuleMark(x: .value("Date", hoverDate))
-                            .foregroundStyle(Color.gray.opacity(0.3))
-                            .offset(yStart: -10)
-                            .zIndex(-1)
-                            .annotation(
-                                position: .top, spacing: 0,
-                                overflowResolution: .init(
-                                    x: .fit(to: .chart),
-                                    y: .disabled)) {
-                                Text(hoverDate.formatted())
-                            }
-                    }
-                }
-                
-                RuleMark(
-                    y: .value("Threshold", viewModel.movingAverage)
+        Chart {
+            ForEach(viewModel.stocks) { stock in
+                LineMark(
+                    x: .value("date", stock.date),
+                    y: .value("price", stock.close)
                 )
-                .foregroundStyle(.red)
+                .foregroundStyle(.green)
+                
+                AreaMark(
+                    x: .value("date", stock.date),
+                    y: .value("price", stock.close)
+                )
+                .foregroundStyle(linearGradient)
+                
+                if let hoverDate {
+                    RuleMark(x: .value("Date", hoverDate))
+                        .foregroundStyle(Color.gray.opacity(0.3))
+                        .offset(yStart: -10)
+                        .zIndex(-1)
+                        .annotation(
+                            position: .top, spacing: 0,
+                            overflowResolution: .init(
+                                x: .fit(to: .chart),
+                                y: .disabled)) {
+                            Text(hoverDate.formatted())
+                        }
+                }
             }
-            .aspectRatio(1, contentMode: .fit)
-            .chartXScale(range: viewModel.zoom)
-            .chartYScale(domain: viewModel.minPrice...viewModel.maxPrice)
-            .chartXAxisLabel("Date")
-            .chartXAxis {
-                AxisMarks(values: .automatic(desiredCount: 12))
-            }
-            .chartYAxisLabel("Stock Price")
-            .chartYAxis {
-                AxisMarks(preset: .extended, position: .leading, values: .automatic(desiredCount: 12))
-            }
+            
+            RuleMark(
+                y: .value("Threshold", viewModel.movingAverage)
+            )
+            .foregroundStyle(.red)
         }
-        .frame(width: width, height: height)
+        //.chartXScale(range: viewModel.zoom)
+        .chartYScale(domain: viewModel.minPrice...viewModel.maxPrice)
+        .chartXAxisLabel("Date")
+        .chartXAxis {
+            AxisMarks(values: .automatic(desiredCount: 12))
+        }
+        .chartYAxisLabel("Stock Price")
+        .chartYAxis {
+            AxisMarks(preset: .extended, position: .leading, values: .automatic(desiredCount: 12))
+        }
         .chartXSelection(value: $hoverDate)
-        .padding()
+        .chartScrollableAxes(.horizontal)
     }
 }
 
 #Preview {
-    LinearChartView(viewModel: ChartDataViewModel.mock,
-                    width: 1000,
-                    height: 500)
+    LinearChartView(viewModel: ChartDataViewModel.mock)
 }

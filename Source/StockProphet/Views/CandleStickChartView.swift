@@ -10,67 +10,59 @@ import Charts
 
 struct CandleStickChartView: View {
     let viewModel: ChartDataViewModel
-    let width: CGFloat
-    let height: CGFloat
     
     @State var hoverDate: Date?
     
     var body: some View {
-        ScrollView(.horizontal) {
-            Chart {
-                ForEach(viewModel.stocks) { stock in
-                    CandlestickMark(
-                        x: .value("date", stock.date),
-                        low: .value("low", stock.low),
-                        high: .value("high", stock.high),
-                        open: .value("open", stock.open),
-                        close: .value("close", stock.close)
-                    )
-                    .foregroundStyle(.green)
-                    
-                    if let hoverDate {
-                        RuleMark(x: .value("Date", hoverDate))
-                            .foregroundStyle(Color.gray.opacity(0.3))
-                            .offset(yStart: -10)
-                            .zIndex(-1)
-                            .annotation(
-                                position: .top, spacing: 0,
-                                overflowResolution: .init(
-                                    x: .fit(to: .chart),
-                                    y: .disabled)) {
-                                Text(hoverDate.formatted())
-                            }
-                    }
-                }
-                
-                RuleMark(
-                    y: .value("Threshold", viewModel.movingAverage)
+        Chart {
+            ForEach(viewModel.stocks) { stock in
+                CandlestickMark(
+                    x: .value("date", stock.date),
+                    low: .value("low", stock.low),
+                    high: .value("high", stock.high),
+                    open: .value("open", stock.open),
+                    close: .value("close", stock.close)
                 )
-                .foregroundStyle(.red)
+                .foregroundStyle(.green)
+                
+                if let hoverDate {
+                    RuleMark(x: .value("Date", hoverDate))
+                        .foregroundStyle(Color.gray.opacity(0.3))
+                        .offset(yStart: -10)
+                        .zIndex(-1)
+                        .annotation(
+                            position: .top, spacing: 0,
+                            overflowResolution: .init(
+                                x: .fit(to: .chart),
+                                y: .disabled)) {
+                            Text(hoverDate.formatted())
+                        }
+                }
             }
-            .chartXScale(range: viewModel.zoom)
-            .chartYScale(domain: viewModel.minPrice...viewModel.maxPrice)
-            .chartXAxisLabel("Date")
-            .chartXAxis {
-                AxisMarks(values: .automatic(desiredCount: 12))
-            }
-            .chartYAxisLabel("Stock Price")
-            .chartYAxis {
-                AxisMarks(values: .automatic(desiredCount: 12))
-            }
-            .chartXSelection(value: $hoverDate)
-            .chartLegend(spacing: 30)
-            .frame(width: Constants.dataPointWidth * CGFloat(viewModel.zoom.upperBound))
+            
+            RuleMark(
+                y: .value("Threshold", viewModel.movingAverage)
+            )
+            .foregroundStyle(.red)
         }
-        .frame(width: width, height: height)
+        .chartXScale(range: viewModel.zoom)
+        .chartYScale(domain: viewModel.minPrice...viewModel.maxPrice)
+        .chartXAxisLabel("Date")
+        .chartXAxis {
+            AxisMarks(values: .automatic(desiredCount: 12))
+        }
+        .chartYAxisLabel("Stock Price")
+        .chartYAxis {
+            AxisMarks(values: .automatic(desiredCount: 12))
+        }
+        .chartXSelection(value: $hoverDate)
+        .chartLegend(spacing: 30)
         .padding()
     }
 }
 
 #Preview {
-    CandleStickChartView(viewModel: ChartDataViewModel.mock,
-                         width: 1000,
-                         height: 500)
+    CandleStickChartView(viewModel: ChartDataViewModel.mock)
 }
 
 
