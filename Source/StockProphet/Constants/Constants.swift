@@ -10,5 +10,5 @@ import Foundation
 enum Constants {
     static let minYScale = 150
     static let maxYScale = 240
-    static let dataPointWidth: CGFloat = 3
+    static let dataPointWidth: CGFloat = 50
 }

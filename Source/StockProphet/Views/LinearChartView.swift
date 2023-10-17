@@ -15,15 +15,28 @@ struct LinearChartView: View {
     
     @State var hoverDate: Date?
     
+    let linearGradient = LinearGradient(gradient: Gradient(colors: [Color.forestGreen.opacity(0.4),
+                                                                    Color.forestGreen.opacity(0)]),
+                                        startPoint: .top,
+                                        endPoint: .bottom)
+    
     var body: some View {
         ScrollView(.horizontal) {
             Chart {
                 ForEach(viewModel.stocks) { stock in
+                    AreaMark(
+                        x: .value("date", stock.date),
+                        y: .value("price", stock.close)
+                    )
+                    .interpolationMethod(.cardinal)
+                    .foregroundStyle(linearGradient)
+                    
                     LineMark(
                         x: .value("date", stock.date),
                         y: .value("price", stock.close)
                     )
-                    .foregroundStyle(Color.forestGreen)
+                    .interpolationMethod(.cardinal)
+                    .foregroundStyle(linearGradient)
                     
                     if let hoverDate {
                         RuleMark(x: .value("Date", hoverDate))
