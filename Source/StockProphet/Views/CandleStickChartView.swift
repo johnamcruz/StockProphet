@@ -69,8 +69,8 @@ struct CandleStickChartView: View {
 
 #Preview {
     CandleStickChartView(viewModel: ChartDataViewModel.mock,
-                         width: 100,
-                         height: 100)
+                         width: 1000,
+                         height: 500)
 }
 
 

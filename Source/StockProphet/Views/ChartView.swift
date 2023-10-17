@@ -51,5 +51,5 @@ struct ChartView: View {
 }
 
 #Preview {
-    ChartView(viewModel: ChartViewModel(stocks: []))
+    ChartView(viewModel: ChartViewModel(stocks: ChartDataViewModel.mock.stocks))
 }
