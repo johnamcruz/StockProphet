@@ -9,16 +9,16 @@ import SwiftUI
 import Charts
 
 struct CandleStickChartView: View {
-    var stocks: [Stock] = []
-    var width: CGFloat
-    var height: CGFloat
-    var startDate: Date
-    var endDate: Date
+    let viewModel: ChartDataViewModel
+    let width: CGFloat
+    let height: CGFloat
+    
+    @State var hoverDate: Date?
     
     var body: some View {
         ScrollView(.horizontal) {
             Chart {
-                ForEach(stocks) { stock in
+                ForEach(viewModel.stocks) { stock in
                     CandlestickMark(
                         x: .value("date", stock.date),
                         low: .value("low", stock.low),
@@ -27,19 +27,41 @@ struct CandleStickChartView: View {
                         close: .value("close", stock.close)
                     )
                     .foregroundStyle(.green)
+                    
+                    if let hoverDate {
+                        RuleMark(x: .value("Date", hoverDate))
+                            .foregroundStyle(.gray)
+                    }
                 }
+                
+                RuleMark(
+                    y: .value("Threshold", viewModel.movingAverage)
+                )
+                .foregroundStyle(.red)
             }
-            .chartYScale(domain: Constants.minYScale...Constants.maxYScale)
-            .chartXScale(domain: startDate...endDate)
+            .chartXScale(domain: viewModel.startDate...viewModel.endDate)
+            .chartYScale(domain: viewModel.minPrice...viewModel.maxPrice)
             .chartXAxisLabel("Date")
             .chartXAxis {
-                AxisMarks()
+                AxisMarks(values: .automatic(desiredCount: 12))
             }
             .chartYAxisLabel("Stock Price")
             .chartYAxis {
-                AxisMarks()
+                AxisMarks(values: .automatic(desiredCount: 12))
             }
-            .frame(width: Constants.dataPointWidth * CGFloat(stocks.count))
+            .chartLegend(spacing: 30)
+            .chartOverlay { proxy in
+                Color.clear
+                    .onContinuousHover { phase in
+                        switch phase {
+                        case let .active(location):
+                            hoverDate = proxy.value(atX: location.x, as: Date.self)
+                        case .ended:
+                            hoverDate = nil
+                        }
+                    }
+            }
+            .frame(width: Constants.dataPointWidth * CGFloat(viewModel.stocks.count))
         }
         .frame(width: width, height: height)
         .padding()
@@ -47,10 +69,9 @@ struct CandleStickChartView: View {
 }
 
 #Preview {
-    CandleStickChartView(width: 400,
-                         height: 400,
-                         startDate: Date(),
-                         endDate: Date())
+    CandleStickChartView(viewModel: ChartDataViewModel.mock,
+                         width: 100,
+                         height: 100)
 }
 
 

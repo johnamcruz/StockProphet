@@ -18,11 +18,9 @@ struct ChartView: View {
                                     width: reader.size.width,
                                     height: reader.size.height)
                 } else {
-                    CandleStickChartView(stocks: viewModel.stocks,
+                    CandleStickChartView(viewModel: viewModel.data,
                                          width: reader.size.width,
-                                         height: reader.size.height,
-                                         startDate: viewModel.zoomDate,
-                                         endDate: viewModel.selectedDate)
+                                         height: reader.size.height)
                 }
             }
         }
