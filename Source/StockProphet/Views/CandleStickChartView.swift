@@ -45,7 +45,7 @@ struct CandleStickChartView: View {
             )
             .foregroundStyle(.red)
         }
-        .chartXScale(range: viewModel.zoom)
+        //.chartXScale(range: viewModel.zoom)
         .chartYScale(domain: viewModel.minPrice...viewModel.maxPrice)
         .chartXAxisLabel("Date")
         .chartXAxis {
@@ -53,11 +53,10 @@ struct CandleStickChartView: View {
         }
         .chartYAxisLabel("Stock Price")
         .chartYAxis {
-            AxisMarks(values: .automatic(desiredCount: 12))
+            AxisMarks(preset: .extended, position: .leading, values: .automatic(desiredCount: 12))
         }
         .chartXSelection(value: $hoverDate)
-        .chartLegend(spacing: 30)
-        .padding()
+        .chartScrollableAxes(.horizontal)
     }
 }
 
