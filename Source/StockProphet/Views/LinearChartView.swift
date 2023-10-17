@@ -26,8 +26,8 @@ struct LinearChartView: View {
                     y: .value("price", stock.close)
                 )
                 .foregroundStyle(.green)
-                .symbol(.circle)
-                .symbolSize(Constants.dotSize)
+                //.symbol(.circle)
+                //.symbolSize(Constants.dotSize)
                 
                 AreaMark(
                     x: .value("date", stock.date),
@@ -67,6 +67,7 @@ struct LinearChartView: View {
         }
         .chartXSelection(value: $hoverDate)
         .chartScrollableAxes(.horizontal)
+        .chartScrollTargetBehavior(.valueAligned(unit: 1))
     }
 }
 
