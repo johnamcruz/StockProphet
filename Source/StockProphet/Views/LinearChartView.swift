@@ -24,14 +24,13 @@ struct LinearChartView: View {
         ScrollView(.horizontal) {
             Chart {
                 ForEach(viewModel.stocks) { stock in
-                    AreaMark(
+                    LineMark(
                         x: .value("date", stock.date),
                         y: .value("price", stock.close)
                     )
                     .interpolationMethod(.cardinal)
-                    .foregroundStyle(linearGradient)
                     
-                    LineMark(
+                    AreaMark(
                         x: .value("date", stock.date),
                         y: .value("price", stock.close)
                     )
@@ -58,7 +57,8 @@ struct LinearChartView: View {
                 )
                 .foregroundStyle(.red)
             }
-            .chartXScale(domain: viewModel.startDate...viewModel.endDate)
+            .aspectRatio(1, contentMode: .fit)
+            .chartXScale(range: viewModel.zoom)
             .chartYScale(domain: viewModel.minPrice...viewModel.maxPrice)
             .chartXAxisLabel("Date")
             .chartXAxis {
@@ -68,8 +68,6 @@ struct LinearChartView: View {
             .chartYAxis {
                 AxisMarks(preset: .extended, position: .leading, values: .automatic(desiredCount: 12))
             }
-            .chartLegend(spacing: 30)
-            .frame(width: Constants.dataPointWidth * CGFloat(viewModel.stocks.count))
         }
         .frame(width: width, height: height)
         .chartXSelection(value: $hoverDate)

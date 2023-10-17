@@ -16,31 +16,21 @@ class ChartViewModel {
     var stocks: [Stock]
     var timePeriod: TimePeriod = .FiveYear
     var type: ChartType = .linear
-    var selectedDate: Date = Date.toDate(date: "2018-01-05") ?? Date()
-    var zoomDate: Date {
-        // Calculate the start and end dates for each time period.
-        guard /*let oneDayAgo = Calendar.current.date(byAdding: .day, value: -1, to: selectedDate),*/
-              let oneWeekAgo = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: selectedDate),
-              let oneMonthAgo = Calendar.current.date(byAdding: .month, value: -1, to: selectedDate),
-              let threeMonthAgo = Calendar.current.date(byAdding: .month, value: -3, to: selectedDate),
-              let oneYearAgo = Calendar.current.date(byAdding: .year, value: -1, to: selectedDate),
-              let fiveYearsAgo = Calendar.current.date(byAdding: .year, value: -5, to: selectedDate) else {
-            return selectedDate
-        }
+    var zoom: ClosedRange<Int> {
         
         switch timePeriod {
             /*case .OneDay:
              return oneDayAgo*/
         case .OneWeek:
-            return oneWeekAgo
+            return 0...7
         case .OneMonth:
-            return oneMonthAgo
+            return 0...30
         case .ThreeMonths:
-            return threeMonthAgo
+            return 0...90
         case .OneYear:
-            return oneYearAgo
+            return 0...365
         case .FiveYear:
-            return fiveYearsAgo
+            return 0...(365*5)
         }
     }
     var maxPrice: Double {
@@ -56,14 +46,12 @@ class ChartViewModel {
     
     var movingAverage: Double {
         let sum = stocks.reduce(Double.zero) { $0 + $1.close }
-        let range = Calendar.current.dateComponents([.day], from: zoomDate, to: selectedDate)
-        return (sum / Double(range.day ?? 1))
+        return (sum / Double(zoom.upperBound))
     }
     
     var data: ChartDataViewModel {
-        ChartDataViewModel(stocks: stocks,
-                           startDate: zoomDate,
-                           endDate: selectedDate,
+        ChartDataViewModel(stocks: stocks, 
+                           zoom: 0...30,
                            minPrice: minPrice,
                            maxPrice: maxPrice,
                            movingAverage: movingAverage)
