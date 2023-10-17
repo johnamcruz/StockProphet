@@ -18,7 +18,7 @@ struct ChartDataViewModel {
 
 extension ChartDataViewModel {
     static var mock: ChartDataViewModel {
-        let stocks = [
+        let data = [
             Stock(name: "AAPL", volume: 1000, date: Date.toDate(date: "2023-01-01")!, open: 100, close: 100, high: 100, low: 100),
             Stock(name: "AAPL", volume: 1000, date: Date.toDate(date: "2023-01-02")!, open: 100, close: 119, high: 100, low: 100),
             Stock(name: "AAPL", volume: 1000, date: Date.toDate(date: "2023-01-03")!, open: 100, close: 120, high: 100, low: 100),
@@ -35,7 +35,7 @@ extension ChartDataViewModel {
             Stock(name: "AAPL", volume: 1000, date: Date.toDate(date: "2023-01-14")!, open: 100, close: 100, high: 100, low: 100),
             Stock(name: "AAPL", volume: 1000, date: Date.toDate(date: "2023-01-15")!, open: 100, close: 101, high: 100, low: 100),
         ]
-        return ChartDataViewModel(stocks: stocks,
+        return ChartDataViewModel(stocks: data,
                            startDate: Date.toDate(date: "2023-01-01")!,
                            endDate: Date.toDate(date: "2023-01-15")!,
                            minPrice: 0,
