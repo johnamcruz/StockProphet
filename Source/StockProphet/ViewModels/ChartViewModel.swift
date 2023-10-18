@@ -43,14 +43,17 @@ class ChartViewModel {
     }
     
     var maxPrice: Double {
-        stocks.map{ $0.close }.max() ?? 0
+        let stocks = stocks.filter{ $0.date > zoom.lowerBound && $0.date <= zoom.upperBound }
+        return stocks.map{ $0.close }.max() ?? 0
     }
     
     var minPrice: Double {
-        stocks.map{ $0.close }.min() ?? 0
+        let stocks = stocks.filter{ $0.date > zoom.lowerBound && $0.date <= zoom.upperBound }
+        return stocks.map{ $0.close }.min() ?? 0
     }
     
     var movingAverage: Double {
+        //let stocks = stocks.filter{ $0.date > zoom.lowerBound && $0.date <= zoom.upperBound }
         let sum = stocks.reduce(Double.zero) { $0 + $1.close }
         let range = Calendar.current.dateComponents([.day], from: zoom.lowerBound, to: selectedDate)
         return (sum / Double(range.day ?? 1))
