@@ -55,7 +55,7 @@ struct LinearChartView: View {
             )
             .foregroundStyle(.red)
         }
-        //.chartXScale(range: viewModel.zoom)
+        .chartXScale(domain: viewModel.zoom)
         .chartYScale(domain: viewModel.minPrice...viewModel.maxPrice)
         .chartXAxisLabel("Date")
         .chartXAxis {

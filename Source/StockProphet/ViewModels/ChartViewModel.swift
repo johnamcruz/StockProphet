@@ -16,22 +16,25 @@ class ChartViewModel {
     var stocks: [Stock]
     var timePeriod: TimePeriod = .FiveYear
     var type: ChartType = .linear
-    var zoom: ClosedRange<Int> {
+    var selectedDate: Date = Date.toDate(date: "2018-02-07")!
+    var zoom: ClosedRange<Date> {
         
+        var start: Date = Date()
         switch timePeriod {
             /*case .OneDay:
              return oneDayAgo*/
         case .OneWeek:
-            return 0...7
+            start = Calendar.current.date(byAdding: .day, value: -7, to: selectedDate)!
         case .OneMonth:
-            return 0...30
+            start = Calendar.current.date(byAdding: .day, value: -30, to: selectedDate)!
         case .ThreeMonths:
-            return 0...90
+            start = Calendar.current.date(byAdding: .day, value: -90, to: selectedDate)!
         case .OneYear:
-            return 0...365
+            start = Calendar.current.date(byAdding: .day, value: -365, to: selectedDate)!
         case .FiveYear:
-            return 0...(365*5)
+            start = Calendar.current.date(byAdding: .day, value: -(365*5), to: selectedDate)!
         }
+        return start...selectedDate
     }
     var maxPrice: Double {
         stocks.reduce(Double.zero) { max($0, $1.close) } + 5
@@ -46,12 +49,12 @@ class ChartViewModel {
     
     var movingAverage: Double {
         let sum = stocks.reduce(Double.zero) { $0 + $1.close }
-        return (sum / Double(zoom.upperBound))
+        return (sum / 10)
     }
     
     var data: ChartDataViewModel {
         ChartDataViewModel(stocks: stocks,
-                           zoom: 0...30,
+                           zoom: zoom,
                            minPrice: minPrice,
                            maxPrice: maxPrice,
                            movingAverage: movingAverage)
