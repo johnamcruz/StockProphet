@@ -27,15 +27,15 @@ class ChartViewModel {
             /*case .OneDay:
              return oneDayAgo*/
         case .OneWeek:
-            start = Calendar.current.date(byAdding: .day, value: -7, to: selectedDate)!
+            start = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: selectedDate)!
         case .OneMonth:
-            start = Calendar.current.date(byAdding: .day, value: -30, to: selectedDate)!
+            start = Calendar.current.date(byAdding: .month, value: -1, to: selectedDate)!
         case .ThreeMonths:
-            start = Calendar.current.date(byAdding: .day, value: -90, to: selectedDate)!
+            start = Calendar.current.date(byAdding: .month, value: -3, to: selectedDate)!
         case .OneYear:
-            start = Calendar.current.date(byAdding: .day, value: -365, to: selectedDate)!
+            start = Calendar.current.date(byAdding: .year, value: -1, to: selectedDate)!
         case .FiveYear:
-            start = Calendar.current.date(byAdding: .day, value: -(365*5), to: selectedDate)!
+            start = Calendar.current.date(byAdding: .year, value: -5, to: selectedDate)!
         }
         return start...selectedDate
     }
@@ -50,7 +50,8 @@ class ChartViewModel {
     
     var movingAverage: Double {
         let sum = stocks.reduce(Double.zero) { $0 + $1.close }
-        return (sum / 10)
+        let range = Calendar.current.dateComponents([.day], from: zoom.lowerBound, to: selectedDate)
+        return (sum / Double(range.day ?? 1))
     }
     
     var data: ChartDataViewModel {
