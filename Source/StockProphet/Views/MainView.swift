@@ -46,7 +46,7 @@ struct MainView: View {
                 }
             }
 #if os(macOS)
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
+            .navigationSplitViewColumnWidth(min: 250, ideal: 300)
 #endif
         } detail: {
             Text("Select a stock")
