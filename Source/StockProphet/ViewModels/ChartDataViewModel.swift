@@ -10,8 +10,7 @@ import Foundation
 struct ChartDataViewModel {
     let stocks: [Stock]
     let zoom: ClosedRange<Date>
-    let minPrice: Double
-    let maxPrice: Double
+    let price: ClosedRange<Double>
     let movingAverage: Double
 }
 
@@ -36,8 +35,7 @@ extension ChartDataViewModel {
         ]
         return ChartDataViewModel(stocks: data,
                                   zoom: Date()...Date(),
-                                  minPrice: 0,
-                                  maxPrice: 200,
+                                  price: 0...200,
                                   movingAverage: 150)
     }
 }

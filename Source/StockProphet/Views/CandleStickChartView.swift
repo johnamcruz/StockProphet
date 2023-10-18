@@ -46,7 +46,7 @@ struct CandleStickChartView: View {
             .foregroundStyle(.red)
         }
         .chartXScale(domain: viewModel.zoom)
-        .chartYScale(domain: viewModel.minPrice...viewModel.maxPrice)
+        .chartYScale(domain: viewModel.price)
         .chartXAxisLabel("Date")
         .chartXAxis {
             AxisMarks(values: .automatic(desiredCount: 12))

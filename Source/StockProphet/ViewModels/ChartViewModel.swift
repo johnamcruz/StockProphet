@@ -57,8 +57,7 @@ class ChartViewModel {
     var data: ChartDataViewModel {
         ChartDataViewModel(stocks: stocks,
                            zoom: zoom,
-                           minPrice: minPrice,
-                           maxPrice: maxPrice,
+                           price: minPrice...maxPrice,
                            movingAverage: movingAverage)
 
     }
