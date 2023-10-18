@@ -33,7 +33,15 @@ struct MainView: View {
             }
             .searchable(text: $viewModel.searchQuery, placement: .toolbar) {
                 ForEach(viewModel.searchResults) { company in
-                    Text("\(company.ticker)").searchCompletion(company)
+                    Button {
+                        if !companies.contains(where: { $0.ticker == company.ticker }) {
+                            withAnimation {
+                                modelContext.insert(company)
+                            }
+                        }
+                    } label: {
+                        Text("\(company.name)")
+                    }
                 }
             }
 #if os(macOS)
