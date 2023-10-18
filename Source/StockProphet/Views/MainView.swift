@@ -32,7 +32,7 @@ struct MainView: View {
                     }
                 }
             }
-            .searchable(text: $viewModel.searchQuery, placement: .toolbar) {
+            .searchable(text: $viewModel.searchQuery, placement: .toolbar, prompt: "Search for Stocks") {
                 ForEach(viewModel.searchResults) { company in
                     Button {
                         if !companies.contains(where: { $0.ticker == company.ticker }) {
