@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct ChartView: View {
-    @Bindable var viewModel: ChartViewModel
+    @State private var viewModel = ChartViewModel()
+    
+    let ticker: String
     
     var body: some View {
         VStack(spacing: 0) {
@@ -41,9 +43,25 @@ struct ChartView: View {
                 .labelsHidden()
             }
         }
+        .task {
+            await viewModel.load(ticker: ticker)
+        }
+        .overlay {
+            if viewModel.isLoading {
+                Rectangle()
+                    .fill(Color.secondary.opacity(0.1))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .overlay {
+                        ProgressView("Loading...")
+                            .progressViewStyle(.circular)
+                            .controlSize(.extraLarge)
+                            .padding()
+                    }
+            }
+        }
     }
 }
 
 #Preview {
-    ChartView(viewModel: ChartViewModel(stocks: ChartDataViewModel.mock.stocks))
+    ChartView(ticker: "AAPL")
 }

@@ -10,30 +10,9 @@ import SwiftUI
 
 @Observable
 class MainViewModel {
-    let service = MockStockService()
-    
-    var stocks: [Stock] = []
-    var isLoading: Bool = false
     var searchQuery: String = ""
     
-    func load() async {
-        isLoading = true
-        await service.load()
-        try? await runPrediction()
-        isLoading = false
-    }
-    
-    func getChartViewModel(symbol: String) -> ChartViewModel {
-        ChartViewModel(stocks: stocks.filter { $0.name == symbol })
-    }
-    
-    func runPrediction() async throws {
-        do {
-            let prediction = try StockPredictionService()
-            let original = service.getAllStocks()
-            stocks = try await prediction.predict(original: original).sorted(by: \.date)
-        } catch {
-            print("predictions failed")
-        }
+    func search() async {
+        
     }
 }

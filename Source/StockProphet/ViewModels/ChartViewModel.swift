@@ -13,12 +13,15 @@ enum ChartViewModelError: Error {
 
 @Observable
 class ChartViewModel {
-    var stocks: [Stock]
+    var stocks: [Stock] = []
     var timePeriod: TimePeriod = .FiveYear
     var type: ChartType = .linear
     var selectedDate: Date = Date.toDate(date: "2018-02-07")!
+    var isLoading: Bool = false
+    
+    let service = MockStockService()
+    
     var zoom: ClosedRange<Date> {
-        
         var start: Date = Date()
         switch timePeriod {
             /*case .OneDay:
@@ -36,15 +39,13 @@ class ChartViewModel {
         }
         return start...selectedDate
     }
+    
     var maxPrice: Double {
         stocks.reduce(Double.zero) { max($0, $1.close) } + 5
     }
+    
     var minPrice: Double {
         stocks.reduce(Double.zero) { min($0, $1.close) } - 5
-    }
-    
-    init(stocks: [Stock]) {
-        self.stocks = stocks
     }
     
     var movingAverage: Double {
@@ -59,5 +60,22 @@ class ChartViewModel {
                            maxPrice: maxPrice,
                            movingAverage: movingAverage)
 
+    }
+    
+    func load(ticker: String) async {
+        isLoading = true
+        await service.load()
+        try? await runPrediction()
+        isLoading = false
+    }
+    
+    func runPrediction() async throws {
+        do {
+            let prediction = try StockPredictionService()
+            let original = service.getAllStocks()
+            stocks = try await prediction.predict(original: original).sorted(by: \.date)
+        } catch {
+            print("predictions failed")
+        }
     }
 }

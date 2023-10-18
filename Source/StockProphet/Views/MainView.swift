@@ -18,7 +18,7 @@ struct MainView: View {
             List {
                 ForEach(items) { item in
                     NavigationLink {
-                        ChartView(viewModel: viewModel.getChartViewModel(symbol: item.ticker))
+                        ChartView(ticker: item.ticker)
                     } label: {
                         StockTickerView(stock: item)
                     }
@@ -32,27 +32,16 @@ struct MainView: View {
                 }
             }
             .searchable(text: $viewModel.searchQuery, placement: .toolbar)
+            .onSubmit(of: .search) {
+                Task {
+                    await viewModel.search()
+                }
+            }
 #if os(macOS)
             .navigationSplitViewColumnWidth(min: 180, ideal: 200)
 #endif
         } detail: {
             Text("Select a stock")
-        }
-        .task {
-            await viewModel.load()
-        }
-        .overlay {
-            if viewModel.isLoading {
-                Rectangle()
-                    .fill(Color.secondary.opacity(0.1))
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .overlay {
-                        ProgressView("Loading...")
-                            .progressViewStyle(.circular)
-                            .controlSize(.extraLarge)
-                            .padding()
-                    }
-            }
         }
     }
 
