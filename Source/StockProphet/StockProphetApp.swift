@@ -13,7 +13,7 @@ struct StockProphetApp: App {
     // todo: add SwiftData when ready
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            StockItem.self,
+            Company.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

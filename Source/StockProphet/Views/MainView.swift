@@ -10,21 +10,21 @@ import SwiftData
 
 struct MainView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [StockItem]
+    @Query private var companies: [Company]
     @State private var viewModel = MainViewModel()
 
     var body: some View {
         NavigationSplitView {
             List {
-                ForEach(items) { item in
+                ForEach(companies) { company in
                     NavigationLink {
-                        ChartView(ticker: item.ticker)
+                        ChartView(ticker: company.ticker)
                     } label: {
-                        StockTickerView(stock: item)
+                        StockTickerView(company: company)
                     }
                     .swipeActions(edge: .trailing) {
                         Button(role: .destructive) {
-                            deleteItem(item: item)
+                            deleteItem(company: company)
                         } label: {
                             Label("Delete", systemImage: "trash")
                         }
@@ -47,14 +47,14 @@ struct MainView: View {
 
     private func addItem() {
         withAnimation {
-            modelContext.insert(StockItem(name: "Apple Inc", ticker: "AAPL", price: 178.0))
+            modelContext.insert(Company(name: "Apple Inc", ticker: "AAPL", price: 178.0))
         }
     }
     
-    private func deleteItem(item: StockItem) {
-        if let index = items.firstIndex(where: { $0.ticker == item.ticker }) {
+    private func deleteItem(company: Company) {
+        if let index = companies.firstIndex(where: { $0.ticker == company.ticker }) {
             withAnimation {
-                modelContext.delete(items[index])
+                modelContext.delete(companies[index])
             }
         }
     }
@@ -62,5 +62,5 @@ struct MainView: View {
 
 #Preview {
     MainView()
-        .modelContainer(for: StockItem.self, inMemory: true)
+        .modelContainer(for: Company.self, inMemory: true)
 }

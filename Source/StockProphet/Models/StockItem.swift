@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class StockItem {
+final class Company {
     var name: String
     var ticker: String
     var price: Decimal
@@ -21,8 +21,17 @@ final class StockItem {
     }
 }
 
-extension StockItem {
-    static var mock: StockItem {
-        StockItem(name: "Apple", ticker: "APPL", price: 178.0)
+extension Company {
+    static var mock: Company {
+        Company(name: "Apple", ticker: "APPL", price: 178.0)
+    }
+    
+    static var all: [Company] {
+        [
+            Company(name: "Apple Inc", ticker: "APPL", price: 178.0),
+            Company(name: "Amazon Inc", ticker: "AMZN", price: 178.0),
+            Company(name: "Google Inc", ticker: "GOOGL", price: 178.0),
+            Company(name: "Micrsoft Inc", ticker: "MSFT", price: 178.0),
+        ]
     }
 }

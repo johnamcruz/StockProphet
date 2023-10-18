@@ -36,6 +36,8 @@
 		6B729EDB2ADC59FE00BED9FD /* StockItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B729EDA2ADC59FE00BED9FD /* StockItem.swift */; };
 		6B729EDD2ADC5C0A00BED9FD /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B729EDC2ADC5C0A00BED9FD /* ChartView.swift */; };
 		6B729EDF2ADC5C8A00BED9FD /* StockTickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B729EDE2ADC5C8A00BED9FD /* StockTickerView.swift */; };
+		6BA362DB2AE06F0000FD76CD /* GOOGL_data.csv in Resources */ = {isa = PBXBuildFile; fileRef = 6BA362DA2AE06F0000FD76CD /* GOOGL_data.csv */; };
+		6BA362DD2AE06F1D00FD76CD /* MSFT_data.csv in Resources */ = {isa = PBXBuildFile; fileRef = 6BA362DC2AE06F1D00FD76CD /* MSFT_data.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,8 @@
 		6B729EDA2ADC59FE00BED9FD /* StockItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockItem.swift; sourceTree = "<group>"; };
 		6B729EDC2ADC5C0A00BED9FD /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		6B729EDE2ADC5C8A00BED9FD /* StockTickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTickerView.swift; sourceTree = "<group>"; };
+		6BA362DA2AE06F0000FD76CD /* GOOGL_data.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GOOGL_data.csv; sourceTree = "<group>"; };
+		6BA362DC2AE06F1D00FD76CD /* MSFT_data.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MSFT_data.csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +242,8 @@
 		6B729ECF2ADC560900BED9FD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6BA362DC2AE06F1D00FD76CD /* MSFT_data.csv */,
+				6BA362DA2AE06F0000FD76CD /* GOOGL_data.csv */,
 				6B04865B2ADCEC7B00D30452 /* AAPL_data.csv */,
 				6B04864E2ADCB43600D30452 /* AMZN_data.csv */,
 				6B729ED62ADC586100BED9FD /* all_stocks_5yr.csv */,
@@ -370,6 +376,8 @@
 			files = (
 				6B04864F2ADCB43600D30452 /* AMZN_data.csv in Resources */,
 				6B729EA92ADC521D00BED9FD /* Preview Assets.xcassets in Resources */,
+				6BA362DD2AE06F1D00FD76CD /* MSFT_data.csv in Resources */,
+				6BA362DB2AE06F0000FD76CD /* GOOGL_data.csv in Resources */,
 				6B04865C2ADCEC7C00D30452 /* AAPL_data.csv in Resources */,
 				6B729EA52ADC521D00BED9FD /* Assets.xcassets in Resources */,
 				6B729ED72ADC586100BED9FD /* all_stocks_5yr.csv in Resources */,

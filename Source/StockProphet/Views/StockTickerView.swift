@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct StockTickerView: View {
-    let stock: StockItem
+    let company: Company
     
     var body: some View {
         HStack(alignment: .center) {
             VStack(alignment: .leading) {
-                Text(stock.ticker)
+                Text(company.ticker)
                     .font(.headline)
-                Text(stock.name)
+                Text(company.name)
                     .font(.caption)
             }
             Spacer()
@@ -23,7 +23,7 @@ struct StockTickerView: View {
                 .fill(Color.forestGreen)
                 .frame(width: 80, height: 30)
                 .overlay {
-                    Text(stock.price.formatted(.currency(code: "USD")))
+                    Text(company.price.formatted(.currency(code: "USD")))
                         .font(.subheadline)
                 }
         }
@@ -33,5 +33,5 @@ struct StockTickerView: View {
 }
 
 #Preview {
-    StockTickerView(stock: StockItem.mock)
+    StockTickerView(company: Company.mock)
 }
