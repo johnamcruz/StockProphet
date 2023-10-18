@@ -56,8 +56,6 @@ struct CandleStickChartView: View {
             AxisMarks(preset: .extended, position: .leading, values: .automatic(desiredCount: 12))
         }
         .chartXSelection(value: $hoverDate)
-        .chartScrollableAxes(.horizontal)
-        .chartScrollTargetBehavior(.valueAligned(unit: 1))
     }
 }
 
