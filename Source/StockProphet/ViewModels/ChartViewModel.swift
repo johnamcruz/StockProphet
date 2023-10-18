@@ -43,11 +43,11 @@ class ChartViewModel {
     }
     
     var maxPrice: Double {
-        stocks.reduce(Double.zero) { max($0, $1.close) } + 5
+        stocks.map{ $0.close }.max() ?? 0
     }
     
     var minPrice: Double {
-        stocks.reduce(Double.zero) { min($0, $1.close) } - 5
+        stocks.map{ $0.close }.min() ?? 0
     }
     
     var movingAverage: Double {
