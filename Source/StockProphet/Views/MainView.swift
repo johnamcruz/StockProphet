@@ -31,10 +31,9 @@ struct MainView: View {
                     }
                 }
             }
-            .searchable(text: $viewModel.searchQuery, placement: .toolbar)
-            .onSubmit(of: .search) {
-                Task {
-                    await viewModel.search()
+            .searchable(text: $viewModel.searchQuery, placement: .toolbar) {
+                ForEach(viewModel.searchResults) { company in
+                    Text("\(company.ticker)").searchCompletion(company)
                 }
             }
 #if os(macOS)
@@ -42,12 +41,6 @@ struct MainView: View {
 #endif
         } detail: {
             Text("Select a stock")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            modelContext.insert(Company(name: "Apple Inc", ticker: "AAPL", price: 178.0))
         }
     }
     

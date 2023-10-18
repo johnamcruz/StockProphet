@@ -28,7 +28,7 @@ extension Company {
     
     static var all: [Company] {
         [
-            Company(name: "Apple Inc", ticker: "APPL", price: 178.0),
+            Company(name: "Apple Inc", ticker: "AAPL", price: 178.0),
             Company(name: "Amazon Inc", ticker: "AMZN", price: 178.0),
             Company(name: "Google Inc", ticker: "GOOGL", price: 178.0),
             Company(name: "Micrsoft Inc", ticker: "MSFT", price: 178.0),

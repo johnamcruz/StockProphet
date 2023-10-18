@@ -12,7 +12,7 @@ import SwiftUI
 class MainViewModel {
     var searchQuery: String = ""
     
-    func search() async {
-        
+    var searchResults: [Company] {
+        searchQuery.isEmpty ? Company.all : Company.all.filter({ $0.name.contains(searchQuery) || searchQuery.contains($0.ticker) })
     }
 }
