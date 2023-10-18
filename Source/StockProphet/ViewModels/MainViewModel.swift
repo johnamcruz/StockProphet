@@ -19,7 +19,6 @@ class MainViewModel {
     func load() async {
         isLoading = true
         await service.load()
-        stocks = service.getAllStocks()
         try? await runPrediction()
         isLoading = false
     }
@@ -31,7 +30,8 @@ class MainViewModel {
     func runPrediction() async throws {
         do {
             let prediction = try StockPredictionService()
-            stocks = try await prediction.predict(original: stocks)
+            let original = service.getAllStocks()
+            stocks = try await prediction.predict(original: original).sorted(by: \.date)
         } catch {
             print("predictions failed")
         }
