@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class Company {
+final class Company: Identifiable {
     var name: String
     var ticker: String
     var price: Decimal
@@ -18,6 +18,10 @@ final class Company {
         self.name = name
         self.ticker = ticker
         self.price = price
+    }
+    
+    var id: String {
+        ticker
     }
 }
 

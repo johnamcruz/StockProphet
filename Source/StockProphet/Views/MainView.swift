@@ -12,10 +12,11 @@ struct MainView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var companies: [Company]
     @State private var viewModel = MainViewModel()
+    @State private var selection: Company.ID?
 
     var body: some View {
         NavigationSplitView {
-            List {
+            List(selection: $selection) {
                 ForEach(companies) { company in
                     NavigationLink {
                         ChartView(ticker: company.ticker)
