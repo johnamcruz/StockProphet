@@ -20,13 +20,13 @@ class MockStockService: StockServiceable {
     static let comma = ","
     var stocks: [Stock] = []
     
-    func load() async {
-        guard let filePath = Bundle.main.path(forResource: "AAPL_data", ofType: "csv") else {
-            return
+    func load(ticker: String) async -> [Stock] {
+        guard let filePath = Bundle.main.path(forResource: "\(ticker)_data", ofType: "csv") else {
+            return []
         }
         
         do {
-            stocks = try await withThrowingTaskGroup(of: Stock?.self, returning: [Stock].self) { group in
+            return try await withThrowingTaskGroup(of: Stock?.self, returning: [Stock].self) { group in
                 let rows = try getStockRows(filePath: filePath)
                 let numberOfChunks = Int(ceil(Double(rows.count) / Double(MockStockService.chunkSize)))
                 for rowGroup in rows.chunks(ofCount: numberOfChunks) {
@@ -53,15 +53,8 @@ class MockStockService: StockServiceable {
             
         } catch {
             print(error.localizedDescription)
+            return []
         }
-    }
-    
-    func getStock(ticker: String) -> [Stock] {
-        stocks.filter{ $0.name == ticker }
-    }
-    
-    func getAllStocks() -> [Stock] {
-        stocks
     }
     
     func getStockRows(filePath: String) throws -> [String] {

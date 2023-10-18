@@ -8,7 +8,5 @@
 import Foundation
 
 protocol StockServiceable {
-    func load() async
-    func getStock(ticker: String) -> [Stock]
-    func getAllStocks() -> [Stock]
+    func load(ticker: String) async -> [Stock]
 }
