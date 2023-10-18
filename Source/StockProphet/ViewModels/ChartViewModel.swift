@@ -18,6 +18,7 @@ class ChartViewModel {
     var type: ChartType = .linear
     var selectedDate: Date = Date.toDate(date: "2018-02-07")!
     var isLoading: Bool = false
+    var showPrediction: Bool = false
     
     let service = MockStockService()
     let prediction = try? StockPredictionService()
@@ -59,7 +60,8 @@ class ChartViewModel {
         ChartDataViewModel(stocks: stocks,
                            zoom: zoom,
                            price: minPrice...maxPrice,
-                           movingAverage: movingAverage)
+                           movingAverage: movingAverage,
+                           showPrediction: showPrediction)
 
     }
     

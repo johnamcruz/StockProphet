@@ -43,6 +43,12 @@
     "open" : {
 
     },
+    "prediction" : {
+
+    },
+    "Prediction" : {
+
+    },
     "price" : {
 
     },
@@ -53,6 +59,9 @@
 
     },
     "Threshold" : {
+
+    },
+    "type" : {
 
     },
     "Type" : {

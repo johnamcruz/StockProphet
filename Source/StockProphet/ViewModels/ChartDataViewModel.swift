@@ -12,6 +12,7 @@ struct ChartDataViewModel {
     let zoom: ClosedRange<Date>
     let price: ClosedRange<Double>
     let movingAverage: Double
+    let showPrediction: Bool
 }
 
 extension ChartDataViewModel {
@@ -36,6 +37,7 @@ extension ChartDataViewModel {
         return ChartDataViewModel(stocks: data,
                                   zoom: Date()...Date(),
                                   price: 0...200,
-                                  movingAverage: 150)
+                                  movingAverage: 150,
+                                  showPrediction: false)
     }
 }

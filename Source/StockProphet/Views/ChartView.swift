@@ -42,6 +42,14 @@ struct ChartView: View {
                 .pickerStyle(.segmented)
                 .labelsHidden()
             }
+            
+            ToolbarItem(placement: .secondaryAction) {
+                Toggle(isOn: $viewModel.showPrediction) {
+                    Image(systemName: "arrow.up.and.down")
+                }
+                .labelsHidden()
+                .toggleStyle(.button)
+            }
         }
         .task {
             await viewModel.load(ticker: ticker)

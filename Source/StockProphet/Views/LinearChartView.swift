@@ -23,11 +23,21 @@ struct LinearChartView: View {
             ForEach(viewModel.stocks) { stock in
                 LineMark(
                     x: .value("date", stock.date),
-                    y: .value("price", stock.close)
+                    y: .value("price", stock.close),
+                    series: .value("type", "Actual")
                 )
                 .foregroundStyle(.green)
                 //.symbol(.circle)
                 //.symbolSize(Constants.dotSize)
+                
+                if viewModel.showPrediction {
+                    LineMark(
+                        x: .value("date", stock.date),
+                        y: .value("prediction", stock.prediction ?? 0),
+                        series: .value("type", "Prediction")
+                    )
+                    .foregroundStyle(.orange)
+                }
                 
                 AreaMark(
                     x: .value("date", stock.date),
