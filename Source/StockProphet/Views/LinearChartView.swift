@@ -51,12 +51,10 @@ struct LinearChartView: View {
                         .offset(yStart: -10)
                         .zIndex(-1)
                         .annotation(
-                            position: .top, spacing: 0,
-                            overflowResolution: .init(
-                                x: .fit(to: .chart),
-                                y: .disabled)) {
-                                    Text(hoverDate.formatted())
-                                }
+                            position: .overlay, spacing: 0,
+                            overflowResolution: .init(x: .fit(to: .chart),y: .disabled)) {
+                                Text(hoverDate.formatted())
+                            }
                 }
             }
             
