@@ -9,15 +9,28 @@ import SwiftUI
 
 struct ChartView: View {
     @State private var viewModel = ChartViewModel()
+    @GestureState private var magnifyBy = 1.0
     
     let ticker: String
+    
+    var magnification: some Gesture {
+        MagnifyGesture()
+            .updating($magnifyBy) { value, gestureState, transaction in
+                gestureState = value.magnification
+                if let period = TimePeriod(rawValue: Int(value.magnification)) {
+                    viewModel.timePeriod =  period
+                }
+            }
+    }
     
     var body: some View {
         VStack(spacing: 0) {
             if viewModel.type == .linear {
                 LinearChartView(viewModel: viewModel.data)
+                    .gesture(magnification)
             } else {
                 CandleStickChartView(viewModel: viewModel.data)
+                    .gesture(magnification)
             }
         }
         .toolbar {

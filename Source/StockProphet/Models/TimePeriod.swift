@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TimePeriod: String, CaseIterable,Identifiable {
+enum TimePeriod: Int, CaseIterable,Identifiable {
     //case OneDay
     case OneWeek
     case OneMonth
