@@ -44,12 +44,12 @@ class ChartViewModel {
     
     var maxPrice: Double {
         let stocks = stocks.filter{ $0.date > zoom.lowerBound && $0.date <= zoom.upperBound }
-        return stocks.map{ $0.close }.max() ?? 0
+        return (stocks.map{ $0.close }.max() ?? 0) + 10
     }
     
     var minPrice: Double {
         let stocks = stocks.filter{ $0.date > zoom.lowerBound && $0.date <= zoom.upperBound }
-        return stocks.map{ $0.close }.min() ?? 0
+        return (stocks.map{ $0.close }.min() ?? 0) - 10
     }
     
     var movingAverage: Double {
