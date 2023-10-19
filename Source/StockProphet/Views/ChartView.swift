@@ -9,16 +9,21 @@ import SwiftUI
 
 struct ChartView: View {
     @State private var viewModel = ChartViewModel()
-    @GestureState private var magnifyBy = 1.0
+    @State private var currentZoom = 0.0
+    @State private var totalZoom = 1.0
     
     let ticker: String
     
     var magnification: some Gesture {
         MagnifyGesture()
-            .updating($magnifyBy) { value, gestureState, transaction in
-                gestureState = value.magnification
-                if let period = TimePeriod(rawValue: Int(value.magnification)) {
-                    viewModel.timePeriod =  period
+            .onChanged { value in
+                currentZoom = value.magnification - 1
+            }
+            .onEnded { value in
+                totalZoom += currentZoom
+                currentZoom = 0
+                if let period = TimePeriod(rawValue: Int(totalZoom)) {
+                    viewModel.timePeriod = period
                 }
             }
     }
