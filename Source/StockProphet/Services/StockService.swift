@@ -16,7 +16,7 @@ class StockService: StockServiceable {
     func load(ticker: String, period: TimePeriod, from: Date, to: Date) async -> [Stock] {
         var results: [Stock] = []
         let request = AggregatesRequest(ticker: ticker,
-                                        multiplier: period.toMultiplier(),
+                                        multiplier: 1,
                                         timespan: period.toTimespan(),
                                         from: from,
                                         to: to)
@@ -46,34 +46,17 @@ extension TimePeriod {
     func toTimespan() -> AggregateTimespan {
         switch self {
         case .OneDay:
+            return AggregateTimespan.minute
+        case .OneWeek:
             return AggregateTimespan.day
-        case .OneWeek:
-            return AggregateTimespan.week
         case .OneMonth:
-            return AggregateTimespan.month
+            return AggregateTimespan.day
         case .ThreeMonths:
-            return AggregateTimespan.month
+            return AggregateTimespan.day
         case .OneYear:
-            return AggregateTimespan.year
+            return AggregateTimespan.day
         case .FiveYear:
-            return AggregateTimespan.year
-        }
-    }
-    
-    func toMultiplier() -> Int {
-        switch self {
-        case .OneDay:
-            return 1
-        case .OneWeek:
-            return 7
-        case .OneMonth:
-            return 1
-        case .ThreeMonths:
-            return 3
-        case .OneYear:
-            return 1
-        case .FiveYear:
-            return 5
+            return AggregateTimespan.day
         }
     }
 }
