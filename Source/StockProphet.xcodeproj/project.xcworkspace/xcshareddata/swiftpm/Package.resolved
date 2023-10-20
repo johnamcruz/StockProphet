@@ -17,6 +17,15 @@
         "revision" : "0a5bc04095a675662cf24757cc0640aa2204253b",
         "version" : "1.0.2"
       }
+    },
+    {
+      "identity" : "swiftpolygonio",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/johnamcruz/SwiftPolygonIO",
+      "state" : {
+        "branch" : "main",
+        "revision" : "17fe89d837de5cad66168a892efe9ac1fa6e6278"
+      }
     }
   ],
   "version" : 2
