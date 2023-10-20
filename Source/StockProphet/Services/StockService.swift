@@ -24,7 +24,7 @@ class StockService: StockServiceable {
             let response = try await client.getAggregates(request: request)
             results = response.results.map { $0.toStock(ticker: ticker) }
         } catch {
-            print(error.localizedDescription)
+            debugPrint(error)
         }
         return results
     }
