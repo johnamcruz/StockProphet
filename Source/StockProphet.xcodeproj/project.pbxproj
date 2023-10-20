@@ -40,6 +40,7 @@
 		6BA362DD2AE06F1D00FD76CD /* MSFT_data.csv in Resources */ = {isa = PBXBuildFile; fileRef = 6BA362DC2AE06F1D00FD76CD /* MSFT_data.csv */; };
 		6BA37E612AE2472500ACA796 /* PolygonClient in Frameworks */ = {isa = PBXBuildFile; productRef = 6BA37E602AE2472500ACA796 /* PolygonClient */; };
 		6BA37E632AE2482800ACA796 /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA37E622AE2482800ACA796 /* Resolver.swift */; };
+		6BA37E652AE24EB900ACA796 /* StockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA37E642AE24EB900ACA796 /* StockService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		6BA362DA2AE06F0000FD76CD /* GOOGL_data.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GOOGL_data.csv; sourceTree = "<group>"; };
 		6BA362DC2AE06F1D00FD76CD /* MSFT_data.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MSFT_data.csv; sourceTree = "<group>"; };
 		6BA37E622AE2482800ACA796 /* Resolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
+		6BA37E642AE24EB900ACA796 /* StockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,10 +238,11 @@
 		6B729ECE2ADC55EF00BED9FD /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				6BA37E622AE2482800ACA796 /* Resolver.swift */,
 				6B0486412ADC633700D30452 /* MockStockService.swift */,
-				6B729ED82ADC591800BED9FD /* StockServiceable.swift */,
+				6BA37E622AE2482800ACA796 /* Resolver.swift */,
 				6B0486632ADD246900D30452 /* StockPredictionService.swift */,
+				6BA37E642AE24EB900ACA796 /* StockService.swift */,
+				6B729ED82ADC591800BED9FD /* StockServiceable.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				6B0486552ADCD0EB00D30452 /* MainViewModel.swift in Sources */,
 				6B729EA12ADC521C00BED9FD /* MainView.swift in Sources */,
 				6B729ED52ADC582600BED9FD /* Stock.swift in Sources */,
+				6BA37E652AE24EB900ACA796 /* StockService.swift in Sources */,
 				6B0486532ADCBEC400D30452 /* CandleStickChartView.swift in Sources */,
 				6B0486662ADD997C00D30452 /* StockForecastingModel.mlpackage in Sources */,
 				6B0486642ADD246900D30452 /* StockPredictionService.swift in Sources */,

@@ -20,7 +20,7 @@ class ChartViewModel {
     var isLoading: Bool = false
     var showPrediction: Bool = false
     
-    let service = MockStockService()
+    let service = StockService()
     let prediction = try? StockPredictionService()
     
     var zoom: ClosedRange<Date> {
@@ -70,8 +70,8 @@ class ChartViewModel {
     
     func load(ticker: String) async {
         isLoading = true
-        async let original = service.load(ticker: ticker)
-        try? await runPrediction(original: original)
+        stocks = await service.load(ticker: ticker)
+        //try? await runPrediction(original: original)
         isLoading = false
     }
     
