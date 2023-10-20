@@ -14,9 +14,9 @@ enum ChartViewModelError: Error {
 @Observable
 class ChartViewModel {
     var stocks: [Stock] = []
-    var timePeriod: TimePeriod = .FiveYear
+    var timePeriod: TimePeriod = .OneDay
     var type: ChartType = .linear
-    var selectedDate: Date = Date.toDate(date: "2018-02-07")!
+    var selectedDate: Date = Date()
     var isLoading: Bool = false
     var showPrediction: Bool = false
     
@@ -71,7 +71,6 @@ class ChartViewModel {
     func load(ticker: String) async {
         isLoading = true
         stocks = await service.load(ticker: ticker, period: timePeriod, from: zoom.lowerBound, to: zoom.upperBound)
-        //try? await runPrediction(original: original)
         isLoading = false
     }
     

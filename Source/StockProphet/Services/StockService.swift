@@ -46,7 +46,7 @@ extension TimePeriod {
     func toTimespan() -> AggregateTimespan {
         switch self {
         case .OneDay:
-            return AggregateTimespan.hour
+            return AggregateTimespan.day
         case .OneWeek:
             return AggregateTimespan.week
         case .OneMonth:
@@ -63,7 +63,7 @@ extension TimePeriod {
     func toMultiplier() -> Int {
         switch self {
         case .OneDay:
-            return 24
+            return 1
         case .OneWeek:
             return 7
         case .OneMonth:
