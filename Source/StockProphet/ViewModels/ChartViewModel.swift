@@ -70,7 +70,7 @@ class ChartViewModel {
     
     func load(ticker: String) async {
         isLoading = true
-        stocks = await service.load(ticker: ticker)
+        stocks = await service.load(ticker: ticker, period: timePeriod, from: zoom.lowerBound, to: zoom.upperBound)
         //try? await runPrediction(original: original)
         isLoading = false
     }

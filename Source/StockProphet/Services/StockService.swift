@@ -13,11 +13,13 @@ class StockService: StockServiceable {
         Resolver.shared.resolve(name: String(describing: PolygonClient.self))
     }
     
-    func load(ticker: String) async -> [Stock] {
+    func load(ticker: String, period: TimePeriod, from: Date, to: Date) async -> [Stock] {
         var results: [Stock] = []
-        let from = Date.toDate(date: "2023-10-10")!
-        let to = Date.toDate(date: "2023-10-17")!
-        let request = AggregatesRequest(ticker: ticker, multiplier: 7, timespan: .week, from: from, to: to)
+        let request = AggregatesRequest(ticker: ticker,
+                                        multiplier: period.toMultiplier(),
+                                        timespan: period.toTimespan(),
+                                        from: from,
+                                        to: to)
         do {
             let response = try await client.getAggregates(request: request)
             results = response.results.map { $0.toStock(ticker: ticker) }
@@ -37,5 +39,41 @@ extension AggregatesResult {
               close: self.close,
               high: self.high,
               low: self.low)
+    }
+}
+
+extension TimePeriod {
+    func toTimespan() -> AggregateTimespan {
+        switch self {
+        case .OneDay:
+            return AggregateTimespan.hour
+        case .OneWeek:
+            return AggregateTimespan.week
+        case .OneMonth:
+            return AggregateTimespan.month
+        case .ThreeMonths:
+            return AggregateTimespan.month
+        case .OneYear:
+            return AggregateTimespan.year
+        case .FiveYear:
+            return AggregateTimespan.year
+        }
+    }
+    
+    func toMultiplier() -> Int {
+        switch self {
+        case .OneDay:
+            return 24
+        case .OneWeek:
+            return 7
+        case .OneMonth:
+            return 1
+        case .ThreeMonths:
+            return 3
+        case .OneYear:
+            return 1
+        case .FiveYear:
+            return 5
+        }
     }
 }

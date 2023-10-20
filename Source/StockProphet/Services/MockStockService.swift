@@ -20,7 +20,12 @@ class MockStockService: StockServiceable {
     static let comma = ","
     var stocks: [Stock] = []
     
-    func load(ticker: String) async -> [Stock] {
+    func load(ticker: String, period: TimePeriod, from: Date, to: Date) async -> [Stock] {
+        let results = await load(ticker: ticker)
+        return results.filter{ $0.date >= from && $0.date <= to  }
+    }
+    
+    private func load(ticker: String) async -> [Stock] {
         guard let filePath = Bundle.main.path(forResource: "\(ticker)_data", ofType: "csv") else {
             return []
         }
