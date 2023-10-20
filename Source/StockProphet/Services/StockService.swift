@@ -9,12 +9,8 @@ import Foundation
 import PolygonClient
 
 class StockService: StockServiceable {
-    let client: PolygonClient
-    
-    init() {
-        let headers = ["Authorization":"Bearer \(Configuration.apiKey)"]
-        let transport = UrlSessionTransport(headers: headers)
-        self.client = PolygonClient(transport: transport)
+    var client: PolygonClient {
+        Resolver.shared.resolve(name: String(describing: PolygonClient.self))
     }
     
     func load(ticker: String) async -> [Stock] {

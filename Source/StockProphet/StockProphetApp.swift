@@ -7,10 +7,10 @@
 
 import SwiftUI
 import SwiftData
+import PolygonClient
 
 @main
 struct StockProphetApp: App {
-    // todo: add SwiftData when ready
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Company.self,
@@ -29,5 +29,11 @@ struct StockProphetApp: App {
             MainView()
         }
         .modelContainer(sharedModelContainer)
+    }
+    
+    init() {
+        let headers = ["Authorization":"Bearer \(Configuration.apiKey)"]
+        let transport = UrlSessionTransport(headers: headers)
+        Resolver.shared.register(PolygonClient(transport: transport))
     }
 }
