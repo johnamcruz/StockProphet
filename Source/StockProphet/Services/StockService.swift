@@ -19,7 +19,9 @@ class StockService: StockServiceable {
     
     func load(ticker: String) async -> [Stock] {
         var results: [Stock] = []
-        let request = AggregatesRequest(ticker: ticker, timespan: .day)
+        let from = Date.toDate(date: "2023-10-10")!
+        let to = Date.toDate(date: "2023-10-17")!
+        let request = AggregatesRequest(ticker: ticker, multiplier: 7, timespan: .week, from: from, to: to)
         do {
             let response = try await client.getAggregates(request: request)
             results = response.results.map { $0.toStock(ticker: ticker) }
