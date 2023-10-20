@@ -41,6 +41,7 @@
 		6BA37E612AE2472500ACA796 /* PolygonClient in Frameworks */ = {isa = PBXBuildFile; productRef = 6BA37E602AE2472500ACA796 /* PolygonClient */; };
 		6BA37E632AE2482800ACA796 /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA37E622AE2482800ACA796 /* Resolver.swift */; };
 		6BA37E652AE24EB900ACA796 /* StockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA37E642AE24EB900ACA796 /* StockService.swift */; };
+		6BA37E672AE2F4E100ACA796 /* apikey.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6BA37E662AE2F4E100ACA796 /* apikey.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		6BA362DC2AE06F1D00FD76CD /* MSFT_data.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MSFT_data.csv; sourceTree = "<group>"; };
 		6BA37E622AE2482800ACA796 /* Resolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
 		6BA37E642AE24EB900ACA796 /* StockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockService.swift; sourceTree = "<group>"; };
+		6BA37E662AE2F4E100ACA796 /* apikey.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = apikey.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +259,7 @@
 				6B729ED62ADC586100BED9FD /* all_stocks_5yr.csv */,
 				6B729EA42ADC521D00BED9FD /* Assets.xcassets */,
 				6B729ED22ADC581600BED9FD /* Localizable.xcstrings */,
+				6BA37E662AE2F4E100ACA796 /* apikey.txt */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B04864F2ADCB43600D30452 /* AMZN_data.csv in Resources */,
+				6BA37E672AE2F4E100ACA796 /* apikey.txt in Resources */,
 				6B729EA92ADC521D00BED9FD /* Preview Assets.xcassets in Resources */,
 				6BA362DD2AE06F1D00FD76CD /* MSFT_data.csv in Resources */,
 				6BA362DB2AE06F0000FD76CD /* GOOGL_data.csv in Resources */,
