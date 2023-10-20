@@ -12,7 +12,7 @@ class StockService: StockServiceable {
     let client: PolygonClient
     
     init() {
-        let headers = ["Authorization":"Bearer \(Constants.apiKey)"]
+        let headers = ["Authorization":"Bearer \(Configuration.apiKey)"]
         let transport = UrlSessionTransport(headers: headers)
         self.client = PolygonClient(transport: transport)
     }

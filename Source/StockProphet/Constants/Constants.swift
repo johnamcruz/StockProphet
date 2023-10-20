@@ -12,6 +12,4 @@ enum Constants {
     static let maxYScale = 240
     static let dataPointWidth: CGFloat = 50
     static let dotSize: CGFloat = 50
-    
-    static let apiKey = ""
 }
