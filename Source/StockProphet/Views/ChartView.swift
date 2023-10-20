@@ -63,13 +63,13 @@ struct ChartView: View {
             
             ToolbarItem(placement: .secondaryAction) {
                 Toggle(isOn: $viewModel.showPrediction) {
-                    Image(systemName: "arrow.up.and.down")
+                    Image(systemName: Images.upDown)
                 }
                 .labelsHidden()
                 .toggleStyle(.button)
             }
         }
-        .task {
+        .task(id: viewModel.timePeriod) {
             await viewModel.load(ticker: ticker)
         }
         .overlay {
