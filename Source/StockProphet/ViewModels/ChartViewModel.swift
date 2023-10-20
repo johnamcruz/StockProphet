@@ -26,8 +26,8 @@ class ChartViewModel {
     var zoom: ClosedRange<Date> {
         var start: Date = Date()
         switch timePeriod {
-            /*case .OneDay:
-             return oneDayAgo*/
+        case .OneDay:
+            start = Calendar.current.date(byAdding: .day, value: -1, to: selectedDate)!
         case .OneWeek:
             start = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: selectedDate)!
         case .OneMonth:
