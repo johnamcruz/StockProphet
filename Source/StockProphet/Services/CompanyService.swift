@@ -9,7 +9,7 @@ import Foundation
 import PolygonClient
 
 protocol CompanyServiceable {
-    func load(date: Date) async -> [Company]
+    func load(query: String) async -> [Company]
 }
 
 class CompanyService: CompanyServiceable {
@@ -17,10 +17,10 @@ class CompanyService: CompanyServiceable {
         Resolver.shared.resolve(name: String(describing: PolygonClient.self))
     }
     
-    func load(date: Date) async -> [Company] {
+    func load(query: String) async -> [Company] {
         var results: [Company] = []
         do {
-            let response = try await client.getGroupDaily(date: date)
+            let response = try await client.getTicker(query: query, order: .asc)
             results = response.results.map{ $0.toCompany() }
         } catch {
             debugPrint(error)
@@ -29,8 +29,8 @@ class CompanyService: CompanyServiceable {
     }
 }
 
-extension GroupedDailyResult {
+extension TickerResult {
     func toCompany() -> Company {
-        Company(name: self.ticker, ticker: self.ticker, price: self.close)
+        Company(name: self.name, ticker: self.ticker, price: 0)
     }
 }

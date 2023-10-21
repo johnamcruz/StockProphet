@@ -11,17 +11,12 @@ import SwiftUI
 @Observable
 class MainViewModel {
     var searchQuery: String = ""
-    var companies: [Company] = []
+    var searchResults: [Company] = []
     
     let service = CompanyService()
     
-    var searchResults: [Company] {
-        searchQuery.isEmpty ? companies : companies.filter({ $0.name.contains(searchQuery) || searchQuery.contains($0.ticker) })
-    }
-    
     func load() async {
-        if let date = Calendar.current.date(byAdding: .day, value: -1, to: Date()) {
-            companies = await service.load(date: date)
-        }
+        if !searchQuery.isEmpty && searchQuery.count >= 3 {}
+        searchResults = await service.load(query: searchQuery)
     }
 }
