@@ -32,7 +32,9 @@ struct StockProphetApp: App {
     }
     
     init() {
-        let transport = UrlSessionTransport(apiKey: Configuration.apiKey)
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        let transport = UrlSessionTransport(session: session, apiKey: Configuration.apiKey)
         Resolver.shared.register(PolygonClient(transport: transport))
     }
 }
