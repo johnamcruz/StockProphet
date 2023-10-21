@@ -64,7 +64,7 @@ struct LinearChartView: View {
             .foregroundStyle(.red)
         }
         //.chartXScale(domain: viewModel.zoom)
-        //.chartYScale(domain: viewModel.price)
+        .chartYScale(domain: viewModel.price)
         .chartXAxisLabel("Date")
         .chartXAxis {
             AxisMarks(values: .automatic(desiredCount: 12))
