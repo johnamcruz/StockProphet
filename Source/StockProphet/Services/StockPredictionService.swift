@@ -9,6 +9,10 @@ import Foundation
 import CoreML
 import Algorithms
 
+enum StockPredictionServiceError: Error {
+    case emptyOriginalData
+}
+
 protocol StockPredictionServiceable {
     func predict(original: Stock) async throws -> Stock
     func predict(original: [Stock]) async throws -> [Stock]
@@ -31,7 +35,11 @@ class StockPredictionService: StockPredictionServiceable {
     }
     
     func predict(original: [Stock]) async throws -> [Stock] {
-        try await withThrowingTaskGroup(of: Stock.self, returning: [Stock].self) { group in
+        guard original.count > 0 else {
+            throw StockPredictionServiceError.emptyOriginalData
+        }
+        
+        return try await withThrowingTaskGroup(of: Stock.self, returning: [Stock].self) { group in
             let numberOfChunks = Int(ceil(Double(original.count) / Double(StockPredictionService.chunkSize)))
             for stockGroup in original.chunks(ofCount: numberOfChunks) {
                 for stock in stockGroup {
