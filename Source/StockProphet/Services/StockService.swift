@@ -48,7 +48,7 @@ extension TimePeriod {
         case .OneDay:
             return AggregateTimespan.minute
         case .OneWeek:
-            return AggregateTimespan.day
+            return AggregateTimespan.hour
         case .OneMonth:
             return AggregateTimespan.day
         case .ThreeMonths:
