@@ -32,10 +32,7 @@ struct StockProphetApp: App {
     }
     
     init() {
-        let headers = ["Authorization":"Bearer \(Configuration.apiKey)"]
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .millisecondsSince1970
-        let transport = UrlSessionTransport(headers: headers, decoder: decoder)
+        let transport = UrlSessionTransport(apiKey: Configuration.apiKey)
         Resolver.shared.register(PolygonClient(transport: transport))
     }
 }
