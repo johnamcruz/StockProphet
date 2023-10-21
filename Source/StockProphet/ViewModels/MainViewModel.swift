@@ -16,7 +16,8 @@ class MainViewModel {
     let service = CompanyService()
     
     func load() async {
-        if !searchQuery.isEmpty && searchQuery.count >= 3 {}
-        searchResults = await service.load(query: searchQuery)
+        if !searchQuery.isEmpty && searchQuery.count >= 3 {
+            searchResults = await service.load(query: searchQuery)
+        }
     }
 }

@@ -20,7 +20,7 @@ class CompanyService: CompanyServiceable {
     func load(query: String) async -> [Company] {
         var results: [Company] = []
         do {
-            let response = try await client.getTicker(query: query, order: .asc)
+            let response = try await client.getTicker(ticker: "", query: query, order: .asc)
             results = response.results.map{ $0.toCompany() }
         } catch {
             debugPrint(error)

@@ -51,7 +51,7 @@ struct MainView: View {
         } detail: {
             Text("Select a stock")
         }
-        .task {
+        .task(id: viewModel.searchQuery) {
             await viewModel.load()
         }
     }
