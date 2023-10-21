@@ -54,6 +54,11 @@ struct MainView: View {
         .task(id: viewModel.searchQuery) {
             await viewModel.load()
         }
+        .onSubmit(of: .search) {
+            Task {
+                await viewModel.load()
+            }
+        }
     }
     
     private func deleteItem(company: Company) {
