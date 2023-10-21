@@ -51,6 +51,9 @@ struct MainView: View {
         } detail: {
             Text("Select a stock")
         }
+        .task {
+            await viewModel.load()
+        }
     }
     
     private func deleteItem(company: Company) {

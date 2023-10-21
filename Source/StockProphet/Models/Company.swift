@@ -12,9 +12,9 @@ import SwiftData
 final class Company: Identifiable {
     var name: String
     var ticker: String
-    var price: Decimal
+    var price: Double
     
-    init(name: String, ticker: String, price: Decimal) {
+    init(name: String, ticker: String, price: Double) {
         self.name = name
         self.ticker = ticker
         self.price = price
