@@ -14,6 +14,7 @@ enum ChartViewModelError: Error {
 @Observable
 class ChartViewModel {
     var stocks: [Stock] = []
+    var movingAverages: [MovingAverage] = []
     var timePeriod: TimePeriod = .OneDay
     var type: ChartType = .linear
     var selectedDate: Date = Date()
@@ -50,16 +51,11 @@ class ChartViewModel {
         return (stocks.map{ $0.close }.min() ?? 0) - 10
     }
     
-    var movingAverage: Double {
-        let sum = stocks.reduce(Double.zero) { $0 + $1.close }
-        return (sum / Double(stocks.count))
-    }
-    
     var data: ChartDataViewModel {
         ChartDataViewModel(stocks: stocks,
                            zoom: zoom,
                            price: minPrice...maxPrice,
-                           movingAverage: movingAverage,
+                           movingAverages: movingAverages,
                            showPrediction: showPrediction)
 
     }
@@ -67,6 +63,7 @@ class ChartViewModel {
     func load(ticker: String) async {
         isLoading = true
         async let original = service.load(ticker: ticker, period: timePeriod, from: zoom.lowerBound, to: zoom.upperBound)
+        //movingAverages = await service.getMovingAverage(ticker: ticker, period: timePeriod)
         try? await runPrediction(original: original)
         isLoading = false
     }

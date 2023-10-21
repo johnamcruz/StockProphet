@@ -28,6 +28,17 @@ class StockService: StockServiceable {
         }
         return results
     }
+    
+    func getMovingAverage(ticker: String, period: TimePeriod) async -> [MovingAverage] {
+        var movingAverageArray: [MovingAverage] = []
+        do {
+            let response = try await client.getSimpleMovingAverage(ticker: ticker, timespan: period.toTimespan())
+            movingAverageArray = response.results.values.map{ $0.toMovingAverage() }
+        } catch {
+            debugPrint(error)
+        }
+        return movingAverageArray
+    }
 }
 
 extension AggregatesResult {

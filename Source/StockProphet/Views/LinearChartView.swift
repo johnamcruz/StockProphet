@@ -58,10 +58,13 @@ struct LinearChartView: View {
                 }
             }
             
-            RuleMark(
-                y: .value("Threshold", viewModel.movingAverage)
-            )
-            .foregroundStyle(.red)
+            ForEach(viewModel.movingAverages) { average in
+                LineMark(
+                    x: .value("date", average.date),
+                    y: .value("price", average.value)
+                )
+                .foregroundStyle(.red)
+            }
         }
         //.chartXScale(domain: viewModel.zoom)
         .chartYScale(domain: viewModel.price)
