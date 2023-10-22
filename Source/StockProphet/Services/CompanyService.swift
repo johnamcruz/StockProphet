@@ -27,9 +27,9 @@ class CompanyService: CompanyServiceable {
                 for company in results {
                     group.addTask{
                         let company = company
-                        let details = try await self.client.getTickerDetails(ticker: company.ticker)
-                        let price = try await self.client.getDailyOpenClose(ticker: company.ticker, date: Date())
-                        return Company(name: details.results.name, ticker: company.ticker, price: price.close)
+                        async let details = self.client.getTickerDetails(ticker: company.ticker)
+                        async let price = self.client.getDailyOpenClose(ticker: company.ticker, date: Date())
+                        return try await Company(name: details.results.name, ticker: company.ticker, price: price.close)
                     }
                 }
                 
