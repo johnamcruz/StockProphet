@@ -71,6 +71,7 @@ struct ChartView: View {
         }
         .task(id: viewModel.timePeriod) {
             await viewModel.load(ticker: ticker)
+            await viewModel.generateMovingAverage(ticker: ticker)
         }
         .overlay {
             if viewModel.isLoading {
