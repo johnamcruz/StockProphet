@@ -49,7 +49,7 @@ struct MainView: View {
             .navigationSplitViewColumnWidth(min: 250, ideal: 300)
 #endif
         } detail: {
-            Text("Select a stock")
+            LandingView()
         }
         .task(id: viewModel.searchQuery) {
             await viewModel.load()

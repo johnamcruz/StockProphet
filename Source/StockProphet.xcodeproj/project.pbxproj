@@ -33,6 +33,7 @@
 		6B729EDD2ADC5C0A00BED9FD /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B729EDC2ADC5C0A00BED9FD /* ChartView.swift */; };
 		6B729EDF2ADC5C8A00BED9FD /* StockTickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B729EDE2ADC5C8A00BED9FD /* StockTickerView.swift */; };
 		6B9F3F432AE457B20083C063 /* MovingAverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F3F422AE457B20083C063 /* MovingAverage.swift */; };
+		6B9F3F452AE49B4C0083C063 /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F3F442AE49B4C0083C063 /* LandingView.swift */; };
 		6BA37E612AE2472500ACA796 /* PolygonClient in Frameworks */ = {isa = PBXBuildFile; productRef = 6BA37E602AE2472500ACA796 /* PolygonClient */; };
 		6BA37E632AE2482800ACA796 /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA37E622AE2482800ACA796 /* Resolver.swift */; };
 		6BA37E652AE24EB900ACA796 /* StockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA37E642AE24EB900ACA796 /* StockService.swift */; };
@@ -90,6 +91,7 @@
 		6B729EDC2ADC5C0A00BED9FD /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		6B729EDE2ADC5C8A00BED9FD /* StockTickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTickerView.swift; sourceTree = "<group>"; };
 		6B9F3F422AE457B20083C063 /* MovingAverage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingAverage.swift; sourceTree = "<group>"; };
+		6B9F3F442AE49B4C0083C063 /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
 		6BA37E622AE2482800ACA796 /* Resolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
 		6BA37E642AE24EB900ACA796 /* StockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockService.swift; sourceTree = "<group>"; };
 		6BA37E662AE2F4E100ACA796 /* apikey.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = apikey.txt; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			children = (
 				6B0486522ADCBEC400D30452 /* CandleStickChartView.swift */,
 				6B729EDC2ADC5C0A00BED9FD /* ChartView.swift */,
+				6B9F3F442AE49B4C0083C063 /* LandingView.swift */,
 				6B0486592ADCE62A00D30452 /* LinearChartView.swift */,
 				6B729EA02ADC521C00BED9FD /* MainView.swift */,
 				6B729EDE2ADC5C8A00BED9FD /* StockTickerView.swift */,
@@ -426,6 +429,7 @@
 				6BA37E692AE2F5A800ACA796 /* Configuration.swift in Sources */,
 				6BA37E652AE24EB900ACA796 /* StockService.swift in Sources */,
 				6B0486532ADCBEC400D30452 /* CandleStickChartView.swift in Sources */,
+				6B9F3F452AE49B4C0083C063 /* LandingView.swift in Sources */,
 				6B0486662ADD997C00D30452 /* StockForecastingModel.mlpackage in Sources */,
 				6B0486642ADD246900D30452 /* StockPredictionService.swift in Sources */,
 				6BA37E6F2AE3578F00ACA796 /* Date+toDate.swift in Sources */,

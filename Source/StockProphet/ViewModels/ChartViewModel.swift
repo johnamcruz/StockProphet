@@ -63,7 +63,7 @@ class ChartViewModel {
     func load(ticker: String) async {
         isLoading = true
         async let original = service.load(ticker: ticker, period: timePeriod, from: zoom.lowerBound, to: zoom.upperBound)
-        //movingAverages = await service.getMovingAverage(ticker: ticker, period: timePeriod)
+        //movingAverages = await service.getMovingAverage(ticker: ticker, date: selectedDate)
         try? await runPrediction(original: original)
         isLoading = false
     }
