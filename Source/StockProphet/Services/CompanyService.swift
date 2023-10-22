@@ -21,17 +21,11 @@ class CompanyService: CompanyServiceable {
         var results: [Company] = []
         do {
             let response = try await client.getTicker(ticker: "", query: query, order: .asc)
-            results = try await response.results.concurrentMap {
-                let company = $0.toCompany()
-                async let price = try? self.client.getDailyOpenClose(ticker: company.ticker, date: Date().previousDate)
-                return await Company(name: company.name, ticker: company.ticker, price: price?.close ?? 0)
-            }
+            results = response.results.map{ $0.toCompany() }
         } catch {
             debugPrint(error)
         }
         return results
-        
-       
     }
 }
 
