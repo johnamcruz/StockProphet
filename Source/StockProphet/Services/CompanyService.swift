@@ -20,12 +20,32 @@ class CompanyService: CompanyServiceable {
     func load(query: String) async -> [Company] {
         var results: [Company] = []
         do {
-            let response = try await client.getTicker(ticker: "", query: query, order: .asc)
-            results = response.results.map{ $0.toCompany() }
+            return try await withThrowingTaskGroup(of: Company.self) { group in
+                let response = try await client.getTicker(ticker: "", query: query, order: .asc)
+                results = response.results.map{ $0.toCompany() }
+                
+                for company in results {
+                    group.addTask{
+                        let company = company
+                        let details = try await self.client.getTickerDetails(ticker: company.ticker)
+                        let price = try await self.client.getDailyOpenClose(ticker: company.ticker, date: Date())
+                        return Company(name: details.results.name, ticker: company.ticker, price: price.close)
+                    }
+                }
+                
+                var results: [Company] = []
+                for try await company in group {
+                    results.append(company)
+                }
+                return results
+            }
+            
         } catch {
             debugPrint(error)
         }
         return results
+        
+       
     }
 }
 
