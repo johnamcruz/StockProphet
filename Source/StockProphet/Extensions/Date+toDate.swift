@@ -14,3 +14,9 @@ extension Date {
         return dateFormatter.date(from: date)
     }
 }
+
+extension Date {
+    var previousDate: Date {
+        Calendar.current.date(byAdding: .day, value: -1, to: self)!
+    }
+}

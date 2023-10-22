@@ -17,7 +17,7 @@ class ChartViewModel {
     var movingAverages: [MovingAverage] = []
     var timePeriod: TimePeriod = .OneDay
     var type: ChartType = .linear
-    var selectedDate: Date = Date()
+    var selectedDate: Date = Date().previousDate
     var isLoading: Bool = false
     var showPrediction: Bool = false
     
@@ -63,7 +63,7 @@ class ChartViewModel {
     func load(ticker: String) async {
         isLoading = true
         async let original = service.load(ticker: ticker, period: timePeriod, from: zoom.lowerBound, to: zoom.upperBound)
-        //movingAverages = await service.getMovingAverage(ticker: ticker, date: selectedDate)
+        movingAverages = await service.getMovingAverage(ticker: ticker, date: selectedDate)
         try? await runPrediction(original: original)
         isLoading = false
     }
