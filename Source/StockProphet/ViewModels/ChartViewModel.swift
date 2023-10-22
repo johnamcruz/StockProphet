@@ -68,7 +68,7 @@ class ChartViewModel {
     }
     
     func generateMovingAverage(ticker: String) async {
-        movingAverages = await service.getMovingAverage(ticker: ticker, date: selectedDate.previousDate)
+        movingAverages = await service.getMovingAverage(ticker: ticker, date: selectedDate.previousDate, period: timePeriod)
     }
     
     func runPrediction(original: [Stock]) async throws {
