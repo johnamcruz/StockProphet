@@ -17,7 +17,7 @@ struct MovingAverage: Identifiable {
     }
 }
 
-extension SimpleMovingAverageValue {
+extension Value {
     func toMovingAverage() -> MovingAverage {
         MovingAverage(date: self.timestamp, value: self.value)
     }

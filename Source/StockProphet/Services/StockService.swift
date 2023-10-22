@@ -29,11 +29,18 @@ class StockService: StockServiceable {
         return results
     }
     
-    func getMovingAverage(ticker: String, date: Date, period: TimePeriod) async -> [MovingAverage] {
+    func getMovingAverage(ticker: String, period: TimePeriod) async -> [MovingAverage] {
         var movingAverageArray: [MovingAverage] = []
+        var cursor: String? = nil
         do {
-            let response = try await client.getSimpleMovingAverage(ticker: ticker, date: date, timespan: period.toTimespan())
-            movingAverageArray = response.results.values.map{ $0.toMovingAverage() }
+            repeat {
+                let response = try await client.getSimpleMovingAverage(ticker: ticker,
+                                                                       timespan: period.toTimespan(), 
+                                                                       cursor: cursor)
+                movingAverageArray.append(contentsOf: response.results.values.map{ $0.toMovingAverage() })
+                let split = response.nextURL?.split(separator: "cursor=")
+                cursor = (split?.count ?? 0) > 1 ? split?[1].trimmingCharacters(in: .whitespacesAndNewlines) : nil
+            } while(cursor != nil)
         } catch {
             debugPrint(error)
         }
