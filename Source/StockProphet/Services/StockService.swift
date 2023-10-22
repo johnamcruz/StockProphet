@@ -33,14 +33,18 @@ class StockService: StockServiceable {
         var movingAverageArray: [MovingAverage] = []
         var cursor: String? = nil
         do {
-            repeat {
+            /*repeat {
                 let response = try await client.getSimpleMovingAverage(ticker: ticker,
                                                                        timespan: period.toTimespan(), 
                                                                        cursor: cursor)
                 movingAverageArray.append(contentsOf: response.results.values.map{ $0.toMovingAverage() })
                 let split = response.nextURL?.split(separator: "cursor=")
                 cursor = (split?.count ?? 0) > 1 ? split?[1].trimmingCharacters(in: .whitespacesAndNewlines) : nil
-            } while(cursor != nil)
+            } while(cursor != nil)*/
+            let response = try await client.getSimpleMovingAverage(ticker: ticker,
+                                                                   timespan: period.toTimespan(),
+                                                                   cursor: cursor)
+            movingAverageArray = response.results.values.map{ $0.toMovingAverage() }
         } catch {
             debugPrint(error)
         }
