@@ -17,7 +17,7 @@ class ChartViewModel {
     var movingAverages: [MovingAverage] = []
     var timePeriod: TimePeriod = .OneDay
     var type: ChartType = .linear
-    var selectedDate: Date = Date().previousDate
+    var selectedDate: Date = Date().weekDay
     var isLoading: Bool = false
     var showPrediction: Bool = false
     
