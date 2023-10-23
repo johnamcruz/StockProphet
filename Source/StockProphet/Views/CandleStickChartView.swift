@@ -21,9 +21,10 @@ struct CandleStickChartView: View {
                     low: .value("low", stock.low),
                     high: .value("high", stock.high),
                     open: .value("open", stock.open),
-                    close: .value("close", stock.close)
+                    close: .value("close", stock.close),
+                    color: stock.isBullish ? .green : .red
                 )
-                .foregroundStyle(.green)
+                .foregroundStyle(stock.isBullish ? .green : .red)
                 
                 if let hoverDate {
                     RuleMark(x: .value("Date", hoverDate))
@@ -73,24 +74,27 @@ struct CandlestickMark<X: Plottable, Y: Plottable>: ChartContent {
     let high: PlottableValue<Y>
     let open: PlottableValue<Y>
     let close: PlottableValue<Y>
+    let color: Color
     
     init(
         x: PlottableValue<X>,
         low: PlottableValue<Y>,
         high: PlottableValue<Y>,
         open: PlottableValue<Y>,
-        close: PlottableValue<Y>
+        close: PlottableValue<Y>,
+        color: Color
     ) {
         self.x = x
         self.low = low
         self.high = high
         self.open = open
         self.close = close
+        self.color = color
     }
     
     var body: some ChartContent {
         RectangleMark(x: x, yStart: low, yEnd: high, width: 4)
         RectangleMark(x: x, yStart: open, yEnd: close, width: 16)
-            .foregroundStyle(.red)
+            .foregroundStyle(color)
     }
 }

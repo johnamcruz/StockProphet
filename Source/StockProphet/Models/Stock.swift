@@ -46,3 +46,17 @@ extension Stock {
                                    volume: self.volume)
     }
 }
+
+extension Stock {
+    var isBullish: Bool {
+        self.close > self.open
+    }
+    
+    var isBearish: Bool {
+        self.close < self.open
+    }
+    
+    var doji: Bool {
+        self.close == self.open
+    }
+}
