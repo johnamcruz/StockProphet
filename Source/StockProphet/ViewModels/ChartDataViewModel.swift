@@ -13,6 +13,7 @@ struct ChartDataViewModel {
     let price: ClosedRange<Double>
     let movingAverages: [MovingAverage]
     let showPrediction: Bool
+    let timePeriod: TimePeriod
 }
 
 extension ChartDataViewModel {
@@ -38,6 +39,7 @@ extension ChartDataViewModel {
                                   zoom: Date()...Date(),
                                   price: 0...200,
                                   movingAverages: [],
-                                  showPrediction: false)
+                                  showPrediction: false,
+                                  timePeriod: .OneDay)
     }
 }

@@ -56,7 +56,8 @@ class ChartViewModel {
                            zoom: zoom,
                            price: minPrice...maxPrice,
                            movingAverages: movingAverages,
-                           showPrediction: showPrediction)
+                           showPrediction: showPrediction,
+                           timePeriod: timePeriod)
 
     }
     

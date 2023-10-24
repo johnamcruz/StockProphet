@@ -34,8 +34,8 @@ struct CandleStickChartView: View {
                         .annotation(
                             position: .overlay, spacing: 0,
                             overflowResolution: .init(x: .fit(to: .chart), y: .disabled)) {
-                            Text(hoverDate.formatted())
-                        }
+                                Text(hoverDate.formatted())
+                            }
                 }
             }
             
@@ -51,7 +51,13 @@ struct CandleStickChartView: View {
         .chartYScale(domain: viewModel.price)
         .chartXAxisLabel("Date")
         .chartXAxis {
-            AxisMarks(values: .automatic(desiredCount: 12))
+            if viewModel.timePeriod == .OneDay {
+                AxisMarks(values: .stride(by: .hour)) { date in
+                    AxisValueLabel(format: .dateTime.hour())
+                }
+            } else {
+                AxisMarks(values: .automatic(desiredCount: 12))
+            }
         }
         .chartYAxisLabel("Stock Price")
         .chartYAxis {
