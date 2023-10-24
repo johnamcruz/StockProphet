@@ -34,6 +34,12 @@
 		6B729EDF2ADC5C8A00BED9FD /* StockTickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B729EDE2ADC5C8A00BED9FD /* StockTickerView.swift */; };
 		6B9F3F432AE457B20083C063 /* MovingAverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F3F422AE457B20083C063 /* MovingAverage.swift */; };
 		6B9F3F452AE49B4C0083C063 /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F3F442AE49B4C0083C063 /* LandingView.swift */; };
+		6B9F3F482AE7909C0083C063 /* TradingStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F3F472AE7909C0083C063 /* TradingStrategy.swift */; };
+		6B9F3F4A2AE790CB0083C063 /* TradeSignals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F3F492AE790CB0083C063 /* TradeSignals.swift */; };
+		6B9F3F4C2AE791410083C063 /* TrendFollowingStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F3F4B2AE791410083C063 /* TrendFollowingStrategy.swift */; };
+		6B9F3F4E2AE791890083C063 /* MeanReversionStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F3F4D2AE791890083C063 /* MeanReversionStrategy.swift */; };
+		6B9F3F502AE792790083C063 /* MarketDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F3F4F2AE792790083C063 /* MarketDataProvider.swift */; };
+		6B9F3F522AE793050083C063 /* OrderExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F3F512AE793050083C063 /* OrderExecutor.swift */; };
 		6BA37E612AE2472500ACA796 /* PolygonClient in Frameworks */ = {isa = PBXBuildFile; productRef = 6BA37E602AE2472500ACA796 /* PolygonClient */; };
 		6BA37E632AE2482800ACA796 /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA37E622AE2482800ACA796 /* Resolver.swift */; };
 		6BA37E652AE24EB900ACA796 /* StockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA37E642AE24EB900ACA796 /* StockService.swift */; };
@@ -92,6 +98,12 @@
 		6B729EDE2ADC5C8A00BED9FD /* StockTickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTickerView.swift; sourceTree = "<group>"; };
 		6B9F3F422AE457B20083C063 /* MovingAverage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingAverage.swift; sourceTree = "<group>"; };
 		6B9F3F442AE49B4C0083C063 /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
+		6B9F3F472AE7909C0083C063 /* TradingStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradingStrategy.swift; sourceTree = "<group>"; };
+		6B9F3F492AE790CB0083C063 /* TradeSignals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSignals.swift; sourceTree = "<group>"; };
+		6B9F3F4B2AE791410083C063 /* TrendFollowingStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendFollowingStrategy.swift; sourceTree = "<group>"; };
+		6B9F3F4D2AE791890083C063 /* MeanReversionStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeanReversionStrategy.swift; sourceTree = "<group>"; };
+		6B9F3F4F2AE792790083C063 /* MarketDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDataProvider.swift; sourceTree = "<group>"; };
+		6B9F3F512AE793050083C063 /* OrderExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderExecutor.swift; sourceTree = "<group>"; };
 		6BA37E622AE2482800ACA796 /* Resolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
 		6BA37E642AE24EB900ACA796 /* StockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockService.swift; sourceTree = "<group>"; };
 		6BA37E662AE2F4E100ACA796 /* apikey.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = apikey.txt; sourceTree = "<group>"; };
@@ -177,6 +189,7 @@
 				6B729EA72ADC521D00BED9FD /* Preview Content */,
 				6B729ECF2ADC560900BED9FD /* Resources */,
 				6B729ECE2ADC55EF00BED9FD /* Services */,
+				6B9F3F462AE790680083C063 /* Strategies */,
 				6B729ECC2ADC55DE00BED9FD /* ViewModels */,
 				6B729ECB2ADC55D700BED9FD /* Views */,
 			);
@@ -271,8 +284,21 @@
 				6B04865F2ADCFD5500D30452 /* ChartType.swift */,
 				6B0486612ADCFE4400D30452 /* TimePeriod.swift */,
 				6B9F3F422AE457B20083C063 /* MovingAverage.swift */,
+				6B9F3F492AE790CB0083C063 /* TradeSignals.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		6B9F3F462AE790680083C063 /* Strategies */ = {
+			isa = PBXGroup;
+			children = (
+				6B9F3F472AE7909C0083C063 /* TradingStrategy.swift */,
+				6B9F3F4B2AE791410083C063 /* TrendFollowingStrategy.swift */,
+				6B9F3F4D2AE791890083C063 /* MeanReversionStrategy.swift */,
+				6B9F3F4F2AE792790083C063 /* MarketDataProvider.swift */,
+				6B9F3F512AE793050083C063 /* OrderExecutor.swift */,
+			);
+			path = Strategies;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -424,10 +450,15 @@
 				6B0486552ADCD0EB00D30452 /* MainViewModel.swift in Sources */,
 				6BA37E712AE3598300ACA796 /* CompanyService.swift in Sources */,
 				6B729EA12ADC521C00BED9FD /* MainView.swift in Sources */,
+				6B9F3F482AE7909C0083C063 /* TradingStrategy.swift in Sources */,
+				6B9F3F4A2AE790CB0083C063 /* TradeSignals.swift in Sources */,
 				6B729ED52ADC582600BED9FD /* Stock.swift in Sources */,
 				6B9F3F432AE457B20083C063 /* MovingAverage.swift in Sources */,
+				6B9F3F4E2AE791890083C063 /* MeanReversionStrategy.swift in Sources */,
+				6B9F3F502AE792790083C063 /* MarketDataProvider.swift in Sources */,
 				6BA37E692AE2F5A800ACA796 /* Configuration.swift in Sources */,
 				6BA37E652AE24EB900ACA796 /* StockService.swift in Sources */,
+				6B9F3F4C2AE791410083C063 /* TrendFollowingStrategy.swift in Sources */,
 				6B0486532ADCBEC400D30452 /* CandleStickChartView.swift in Sources */,
 				6B9F3F452AE49B4C0083C063 /* LandingView.swift in Sources */,
 				6B0486662ADD997C00D30452 /* StockForecastingModel.mlpackage in Sources */,
@@ -435,6 +466,7 @@
 				6BA37E6F2AE3578F00ACA796 /* Date+toDate.swift in Sources */,
 				6BA37E6B2AE3318C00ACA796 /* Images.swift in Sources */,
 				6B0486452ADC66DB00D30452 /* Sequence+Foreach.swift in Sources */,
+				6B9F3F522AE793050083C063 /* OrderExecutor.swift in Sources */,
 				6B729E9F2ADC521C00BED9FD /* StockProphetApp.swift in Sources */,
 				6BA37E632AE2482800ACA796 /* Resolver.swift in Sources */,
 				6B04866C2ADE08FB00D30452 /* ChartDataViewModel.swift in Sources */,
