@@ -64,9 +64,9 @@ class TrendFollowingStrategy: TradingStrategy {
     internal func executeSignal(signal: TradeSignal) async {
         switch signal {
         case .buy:
-            await orderExecutor.buy(symbol: symbol)
+            await orderExecutor.buy(symbol: symbol, orderQuantity: 10)
         case .sell:
-            await orderExecutor.sell(symbol: symbol)
+            await orderExecutor.sell(symbol: symbol, orderQuantity: 10)
         case .hold:
             break
         }

@@ -8,6 +8,6 @@
 import Foundation
 
 protocol OrderExecutor {
-    func buy(symbol: String) async
-    func sell(symbol: String) async
+    func buy(symbol: String, orderQuantity: Int) async
+    func sell(symbol: String, orderQuantity: Int) async
 }
