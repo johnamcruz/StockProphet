@@ -1,0 +1,10 @@
+{
+  "MLModelVersionStringKey" : "0.0.1",
+  "MLModelDescriptionKey" : "Stock forecasting tool",
+  "MLModelCreatorDefinedKey" : {
+    "com.github.apple.coremltools.version" : "7.0",
+    "com.github.apple.coremltools.source" : "tensorflow==2.14.0"
+  },
+  "MLModelAuthorKey" : "John Cruz",
+  "MLModelLicenseKey" : "MIT"
+}
