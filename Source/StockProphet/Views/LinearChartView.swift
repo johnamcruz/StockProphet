@@ -12,6 +12,7 @@ struct LinearChartView: View {
     let viewModel: ChartDataViewModel
     
     @State private var hoverDate: Date?
+    @State private var position: Date = Date()
     
     let linearGradient = LinearGradient(gradient: Gradient(colors: [Color.forestGreen.opacity(0.4),
                                                                     Color.forestGreen.opacity(0)]),
@@ -70,7 +71,19 @@ struct LinearChartView: View {
         .chartYScale(domain: viewModel.price)
         .chartXAxisLabel("Date")
         .chartXAxis {
-            AxisMarks(values: .automatic(desiredCount: 12))
+            if viewModel.timePeriod == .OneDay {
+                AxisMarks(values: .stride(by: .hour)) { date in
+                    AxisValueLabel(format: .dateTime.hour())
+                }
+            } else if viewModel.timePeriod == .OneWeek {
+                AxisMarks(values: .stride(by: .day)) { date in
+                    AxisValueLabel(format: .dateTime.month().day())
+                }
+            } else {
+                AxisMarks(values: .stride(by: .month)) { date in
+                    AxisValueLabel(format: .dateTime.month().year(.twoDigits))
+                }
+            }
         }
         .chartYAxisLabel("Stock Price")
         .chartYAxis {
@@ -78,6 +91,7 @@ struct LinearChartView: View {
         }
         .chartXSelection(value: $hoverDate)
         .chartScrollableAxes(.horizontal)
+        .chartScrollPosition(x: $position)
         .chartScrollTargetBehavior(.valueAligned(unit: 1))
     }
 }

@@ -11,7 +11,8 @@ import Charts
 struct CandleStickChartView: View {
     let viewModel: ChartDataViewModel
     
-    @State var hoverDate: Date?
+    @State private var hoverDate: Date?
+    @State private var position: Date = Date()
     
     var body: some View {
         Chart {
@@ -55,8 +56,14 @@ struct CandleStickChartView: View {
                 AxisMarks(values: .stride(by: .hour)) { date in
                     AxisValueLabel(format: .dateTime.hour())
                 }
+            } else if viewModel.timePeriod == .OneWeek {
+                AxisMarks(values: .stride(by: .day)) { date in
+                    AxisValueLabel(format: .dateTime.month().day())
+                }
             } else {
-                AxisMarks(values: .automatic(desiredCount: 12))
+                AxisMarks(values: .stride(by: .month)) { date in
+                    AxisValueLabel(format: .dateTime.month().year(.twoDigits))
+                }
             }
         }
         .chartYAxisLabel("Stock Price")
@@ -65,6 +72,7 @@ struct CandleStickChartView: View {
         }
         .chartXSelection(value: $hoverDate)
         .chartScrollableAxes(.horizontal)
+        .chartScrollPosition(x: $position)
         .chartScrollTargetBehavior(.valueAligned(unit: 1))
     }
 }
