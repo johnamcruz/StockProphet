@@ -39,15 +39,6 @@ struct Stock: Codable, Identifiable {
 }
 
 extension Stock {
-    func toInput() -> StockForecastingModelInput {
-        StockForecastingModelInput(open: self.open,
-                                   high: self.high,
-                                   low: self.low,
-                                   volume: self.volume)
-    }
-}
-
-extension Stock {
     var isBullish: Bool {
         self.close > self.open
     }

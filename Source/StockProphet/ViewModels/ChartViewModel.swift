@@ -22,7 +22,6 @@ class ChartViewModel {
     var showPrediction: Bool = false
     
     let service = StockService()
-    let prediction = try? StockPredictionService()
     
     var zoom: ClosedRange<Date> {
         var start: Date = Date()
@@ -63,24 +62,11 @@ class ChartViewModel {
     
     func load(ticker: String) async {
         isLoading = true
-        async let original = service.load(ticker: ticker, period: timePeriod, from: zoom.lowerBound, to: zoom.upperBound)
-        try? await runPrediction(original: original)
+        stocks = await service.load(ticker: ticker, period: timePeriod, from: zoom.lowerBound, to: zoom.upperBound)
         isLoading = false
     }
     
     func generateMovingAverage(ticker: String) async {
         movingAverages = await service.getMovingAverage(ticker: ticker, period: timePeriod)
-    }
-    
-    func runPrediction(original: [Stock]) async throws {
-        do {
-            guard let prediction = prediction else {
-                print("failed to load predictions")
-                return
-            }
-            stocks = try await prediction.predict(original: original).sorted(by: \.date)
-        } catch {
-            print("predictions failed")
-        }
     }
 }
