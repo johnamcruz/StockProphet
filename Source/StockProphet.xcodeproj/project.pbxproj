@@ -38,7 +38,7 @@
 		6B9F3F4E2AE791890083C063 /* MeanReversionStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F3F4D2AE791890083C063 /* MeanReversionStrategy.swift */; };
 		6B9F3F502AE792790083C063 /* MarketDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F3F4F2AE792790083C063 /* MarketDataProvider.swift */; };
 		6B9F3F522AE793050083C063 /* OrderExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F3F512AE793050083C063 /* OrderExecutor.swift */; };
-		6B9F3F592AE9C3D70083C063 /* stock-lstm.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F3F582AE9C3D70083C063 /* stock-lstm.mlpackage */; };
+		6B9F3F592AE9C3D70083C063 /* StockForecaster.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F3F582AE9C3D70083C063 /* StockForecaster.mlpackage */; };
 		6B9F3F5B2AE9C42B0083C063 /* StockForecastingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F3F5A2AE9C42B0083C063 /* StockForecastingService.swift */; };
 		6BA37E612AE2472500ACA796 /* PolygonClient in Frameworks */ = {isa = PBXBuildFile; productRef = 6BA37E602AE2472500ACA796 /* PolygonClient */; };
 		6BA37E632AE2482800ACA796 /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA37E622AE2482800ACA796 /* Resolver.swift */; };
@@ -102,7 +102,7 @@
 		6B9F3F4D2AE791890083C063 /* MeanReversionStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeanReversionStrategy.swift; sourceTree = "<group>"; };
 		6B9F3F4F2AE792790083C063 /* MarketDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDataProvider.swift; sourceTree = "<group>"; };
 		6B9F3F512AE793050083C063 /* OrderExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderExecutor.swift; sourceTree = "<group>"; };
-		6B9F3F582AE9C3D70083C063 /* stock-lstm.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "stock-lstm.mlpackage"; sourceTree = "<group>"; };
+		6B9F3F582AE9C3D70083C063 /* StockForecaster.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = StockForecaster.mlpackage; sourceTree = "<group>"; };
 		6B9F3F5A2AE9C42B0083C063 /* StockForecastingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockForecastingService.swift; sourceTree = "<group>"; };
 		6BA37E622AE2482800ACA796 /* Resolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
 		6BA37E642AE24EB900ACA796 /* StockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockService.swift; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 		6B0486462ADCABA500D30452 /* MLModels */ = {
 			isa = PBXGroup;
 			children = (
-				6B9F3F582AE9C3D70083C063 /* stock-lstm.mlpackage */,
+				6B9F3F582AE9C3D70083C063 /* StockForecaster.mlpackage */,
 			);
 			path = MLModels;
 			sourceTree = "<group>";
@@ -464,7 +464,7 @@
 				6B9F3F5B2AE9C42B0083C063 /* StockForecastingService.swift in Sources */,
 				6BA37E6F2AE3578F00ACA796 /* Date+toDate.swift in Sources */,
 				6BA37E6B2AE3318C00ACA796 /* Images.swift in Sources */,
-				6B9F3F592AE9C3D70083C063 /* stock-lstm.mlpackage in Sources */,
+				6B9F3F592AE9C3D70083C063 /* StockForecaster.mlpackage in Sources */,
 				6B0486452ADC66DB00D30452 /* Sequence+Foreach.swift in Sources */,
 				6B9F3F522AE793050083C063 /* OrderExecutor.swift in Sources */,
 				6B729E9F2ADC521C00BED9FD /* StockProphetApp.swift in Sources */,
