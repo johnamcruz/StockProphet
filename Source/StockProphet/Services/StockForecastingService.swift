@@ -31,6 +31,7 @@ class StockForecastingService: StockForecastingServiceable {
         
         let input = StockForecasterInput(lstm_input: try get60DayForecast(original: original))
         let output = try await model.prediction(input: input)
+        let results = output.Identity.toDoubleArray().inverseMinMaxScaler(featureRange: (-1, 1), originalMinMax: (0,1))
         return []
     }
     

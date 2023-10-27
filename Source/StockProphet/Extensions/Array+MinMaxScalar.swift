@@ -25,3 +25,17 @@ extension Array where Element == Double {
         return originalData
     }
 }
+
+extension Array {
+    func flatten() -> [Element] {
+        var flattenedArray: [Element] = []
+        for element in self {
+            if let subArray = element as? [Element] {
+                flattenedArray += subArray.flatten()
+            } else {
+                flattenedArray.append(element)
+            }
+        }
+        return flattenedArray
+    }
+}

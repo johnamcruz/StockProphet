@@ -41,6 +41,7 @@
 		6B9F3F592AE9C3D70083C063 /* StockForecaster.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F3F582AE9C3D70083C063 /* StockForecaster.mlpackage */; };
 		6B9F3F5B2AE9C42B0083C063 /* StockForecastingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F3F5A2AE9C42B0083C063 /* StockForecastingService.swift */; };
 		6B9F3F5D2AEB61620083C063 /* Array+MinMaxScalar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F3F5C2AEB61620083C063 /* Array+MinMaxScalar.swift */; };
+		6B9F3F5F2AEB9C9A0083C063 /* MLMultArray+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F3F5E2AEB9C9A0083C063 /* MLMultArray+Extensions.swift */; };
 		6BA37E612AE2472500ACA796 /* PolygonClient in Frameworks */ = {isa = PBXBuildFile; productRef = 6BA37E602AE2472500ACA796 /* PolygonClient */; };
 		6BA37E632AE2482800ACA796 /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA37E622AE2482800ACA796 /* Resolver.swift */; };
 		6BA37E652AE24EB900ACA796 /* StockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA37E642AE24EB900ACA796 /* StockService.swift */; };
@@ -106,6 +107,7 @@
 		6B9F3F582AE9C3D70083C063 /* StockForecaster.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = StockForecaster.mlpackage; sourceTree = "<group>"; };
 		6B9F3F5A2AE9C42B0083C063 /* StockForecastingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockForecastingService.swift; sourceTree = "<group>"; };
 		6B9F3F5C2AEB61620083C063 /* Array+MinMaxScalar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+MinMaxScalar.swift"; sourceTree = "<group>"; };
+		6B9F3F5E2AEB9C9A0083C063 /* MLMultArray+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MLMultArray+Extensions.swift"; sourceTree = "<group>"; };
 		6BA37E622AE2482800ACA796 /* Resolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
 		6BA37E642AE24EB900ACA796 /* StockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockService.swift; sourceTree = "<group>"; };
 		6BA37E662AE2F4E100ACA796 /* apikey.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = apikey.txt; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				6B0486442ADC66DB00D30452 /* Sequence+Foreach.swift */,
 				6BA37E6E2AE3578F00ACA796 /* Date+toDate.swift */,
 				6B9F3F5C2AEB61620083C063 /* Array+MinMaxScalar.swift */,
+				6B9F3F5E2AEB9C9A0083C063 /* MLMultArray+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				6BA37E6B2AE3318C00ACA796 /* Images.swift in Sources */,
 				6B9F3F592AE9C3D70083C063 /* StockForecaster.mlpackage in Sources */,
 				6B0486452ADC66DB00D30452 /* Sequence+Foreach.swift in Sources */,
+				6B9F3F5F2AEB9C9A0083C063 /* MLMultArray+Extensions.swift in Sources */,
 				6B9F3F522AE793050083C063 /* OrderExecutor.swift in Sources */,
 				6B729E9F2ADC521C00BED9FD /* StockProphetApp.swift in Sources */,
 				6BA37E632AE2482800ACA796 /* Resolver.swift in Sources */,
