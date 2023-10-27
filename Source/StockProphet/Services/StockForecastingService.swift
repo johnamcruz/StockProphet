@@ -31,32 +31,28 @@ class StockForecastingService: StockForecastingServiceable {
         
         let input = StockForecasterInput(lstm_input: try get60DayForecast(original: original))
         let output = try await model.prediction(input: input)
-        
         return []
     }
     
-    func get60DayForecast(original: [Stock]) throws -> MLMultiArray {
-        /**
-         # Step 6: Predict Future Stock Price
-         # Get the last 60 day closing price
-         last_60_days = dataset[-60:]
-
-         # Scale the data to be values between 0 and 1
-         last_60_days_scaled = scaler.transform(last_60_days.reshape(-1, 1))
-
-         # Create an empty list
-         X_test = []
-
-         # Append the past 60 days
-         X_test.append(last_60_days_scaled)
-
-         # Convert the X_test data set to a numpy array
-         X_test = np.array(X_test)
-
-         # Reshape the data
-         X_test = np.reshape(X_test, (X_test.shape[0], X_test.shape[1], 1))
-         */
+    private func get60DayForecast(original: [Stock]) throws -> MLMultiArray {
+        let last60days = original.suffix(60)
+        let scaled = last60days.map{ $0.close }.minMaxScaler(featureRange: (0,1))
+        var array = try MLMultiArray(shape: [1, 60, 1], dataType: .float32)
         
-        throw StockForecastingServiceError.modelLoadingError
+        let ptr = UnsafeMutablePointer<Double>(OpaquePointer(array.dataPointer))
+        
+        let channelStride = array.strides[0].intValue
+        let rowStride = array.strides[1].intValue
+        let columnStride = array.strides[2].intValue
+        
+        @inline(__always) func offset(_ channel: Int, _ y: Int, _ x: Int) -> Int {
+            return channel*channelStride + y*rowStride + x*columnStride
+        }
+        
+        for (index, value) in scaled.enumerated() {
+            ptr[offset(0, index, 0)] = value
+        }
+        
+        return array
     }
 }

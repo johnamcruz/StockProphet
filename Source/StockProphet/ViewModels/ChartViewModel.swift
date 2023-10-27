@@ -22,6 +22,7 @@ class ChartViewModel {
     var showPrediction: Bool = false
     
     let service = StockService()
+    let forecaster = StockForecastingService()
     
     var zoom: ClosedRange<Date> {
         var start: Date = Date()
@@ -63,6 +64,7 @@ class ChartViewModel {
     func load(ticker: String) async {
         isLoading = true
         stocks = await service.load(ticker: ticker, period: timePeriod, from: zoom.lowerBound, to: zoom.upperBound)
+        try? await forecaster.predict(original: stocks)
         isLoading = false
     }
     
