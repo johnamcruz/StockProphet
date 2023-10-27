@@ -16,4 +16,12 @@ extension Array where Element == Double {
         }
         return scaledData
     }
+    
+    func inverseMinMaxScaler(featureRange: (Double, Double), originalMinMax: (Double, Double)) -> [Double] {
+        let (min, max) = originalMinMax
+        let originalData = self.map { scaledValue in
+            return (scaledValue - featureRange.0) / (featureRange.1 - featureRange.0) * (max - min) + min
+        }
+        return originalData
+    }
 }
