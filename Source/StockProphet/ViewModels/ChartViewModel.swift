@@ -22,7 +22,6 @@ class ChartViewModel {
     var showPrediction: Bool = false
     
     let service = StockService()
-    let forecaster = StockForecastingService()
     
     var zoom: ClosedRange<Date> {
         var start: Date = Date()
