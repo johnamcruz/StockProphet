@@ -16,7 +16,7 @@ class StockService: StockServiceable {
     func load(ticker: String, period: TimePeriod, from: Date, to: Date) async -> [Stock] {
         var results: [Stock] = []
         let request = AggregatesRequest(ticker: ticker,
-                                        multiplier: 1,
+                                        multiplier: period == .OneDay ? 15 : 1,
                                         timespan: period.toTimespan(),
                                         from: from,
                                         to: to)
